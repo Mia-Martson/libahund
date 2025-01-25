@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ResolutionManager : MonoBehaviour {
     public static ResolutionManager Instance; // Singleton instance
 
     [SerializeField] private Color backgroundColor = Color.black; // Color for empty screen space
-
+    [SerializeField] private TMP_Dropdown resolutionDropdown; // dropdown
     private void Awake() {
         // Ensure only one ResolutionManager exists
         if (Instance == null) {
@@ -15,7 +17,22 @@ public class ResolutionManager : MonoBehaviour {
         }
     }
 
+    private void Start() {
+        // Add listener to the dropdown for resolution changes
+        if (resolutionDropdown != null) {
+            resolutionDropdown.onValueChanged.AddListener(ChangeResolution);
+            // Set the dropdown value to the saved resolution or default to 0
+            int savedResolution = PlayerPrefs.GetInt("ResolutionOption", 0);
+            resolutionDropdown.value = savedResolution;
+            resolutionDropdown.RefreshShownValue(); // Update the dropdown visually
+            ChangeResolution(savedResolution); // Apply the saved resolution
+        } else {
+            Debug.LogError("Resolution Dropdown is not assigned in the Inspector!");
+        }
+    }
+
     public void SetResolution(int width, int height, bool fullscreen) {
+        Debug.Log($"ATTEPT NOW!!!!!!!!Resolution option selected: {fullscreen}");
         Screen.SetResolution(width, height, fullscreen);
 
         // Adjust the camera viewport for square aspect ratio
@@ -38,6 +55,7 @@ public class ResolutionManager : MonoBehaviour {
     }
 
     public void ChangeResolution(int option) {
+        Debug.Log($"Resolution option selected: {option}");
         switch (option) {
             case 0: // 320x320
                 SetResolution(320, 320, false);

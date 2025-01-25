@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 44901613}
   - component: {fileID: 44901612}
+  - component: {fileID: 44901614}
   m_Layer: 0
   m_Name: ResolutionManager
   m_TagString: Untagged
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  resolutionDropdown: {fileID: 0}
 --- !u!4 &44901613
 Transform:
   m_ObjectHideFlags: 0
@@ -167,6 +169,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &44901614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44901611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19dc065864f67846b5cdb755ad66ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGameWidth: 320
+  backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  pixelsPerUnit: 16
 --- !u!1 &66141160
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,12 +769,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 320, y: 320}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1677,7 +1694,6 @@ GameObject:
   - component: {fileID: 1648976063}
   - component: {fileID: 1648976062}
   - component: {fileID: 1648976061}
-  - component: {fileID: 1648976064}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1759,26 +1775,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1648976064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648976060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AssetsPPU: 16
-  m_RefResolutionX: 320
-  m_RefResolutionY: 320
-  m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!1 &1662782547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,8 +1809,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: -0.0000064969}
-  m_SizeDelta: {x: 345.0959, y: 345.0959}
+  m_AnchoredPosition: {x: -0.26364, y: 0.2636}
+  m_SizeDelta: {x: 320, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662782549
 MonoBehaviour:

@@ -1,35 +1,98 @@
 using UnityEngine;
 
-public class playerController : MonoBehaviour {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePoint;
+public class PlayerController : MonoBehaviour {
+    [Header("Movement Settings")]
+    [SerializeField] private float rangedSpeed = 5f;   // Movement speed in ranged mode
+    [SerializeField] private float meleeSpeed = 8f;    // Movement speed in melee mode
 
-    private Vector2 moveInput;
-    private Vector2 mousePosition;
+    [Header("Shooting Settings")]
+    [SerializeField] private GameObject bulletPrefab;  // Prefab for ranged bullets
+    [SerializeField] private Transform firePoint;      // Point where bullets are spawned
+    [SerializeField] private float shootCooldown = 0.5f;
+
+    [Header("Transformation Settings")]
+    [SerializeField] private float transformationCooldown = 5f;  // Cooldown time for transforming
+
+    [Header("Melee Dash Settings")]
+    [SerializeField] private float dashDistance = 5f;            // Distance covered by the dash
+    [SerializeField] private float dashCooldown = 1f;            // Cooldown time for dashing
+
+    private bool isMelee = false;                                // Tracks current mode (false = ranged, true = melee)
+    private float shootTimer = 0f;                               // Timer for shooting cooldown
+    private float transformationTimer = 0f;                     // Timer for transformation cooldown
+    private float dashTimer = 0f;                                // Timer for dash cooldown
+
+    private Vector2 moveInput;                                   // Input for movement
+    private Vector2 mousePosition;                               // Mouse position for aiming
 
     void Update() {
         HandleMovement();
         HandleShooting();
+        HandleTransformation();
+        HandleDash();
     }
 
     private void HandleMovement() {
+        // Player movement input
         moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        transform.Translate(moveInput * moveSpeed * Time.deltaTime, Space.World);
+        float currentSpeed = isMelee ? meleeSpeed : rangedSpeed;
+        transform.Translate(moveInput * currentSpeed * Time.deltaTime, Space.World);
 
-        // Optional: Rotate player towards mouse
+        // Rotate the player towards the mouse
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
         transform.up = direction;
     }
 
     private void HandleShooting() {
-        if (Input.GetMouseButtonDown(0)) {
+        // Reduce the shooting cooldown timer
+        if (shootTimer > 0) {
+            shootTimer -= Time.deltaTime;
+        }
+
+        // Only allow shooting in ranged mode
+        if (!isMelee && Input.GetMouseButton(0) && shootTimer <= 0) {
             Shoot();
+            shootTimer = shootCooldown; // Reset shooting cooldown
         }
     }
 
     private void Shoot() {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log("Bullet Fired!");
+    }
+
+    private void HandleTransformation() {
+        // Reduce the transformation cooldown timer
+        if (transformationTimer > 0) {
+            transformationTimer -= Time.deltaTime;
+        }
+
+        // Transform when E is pressed and cooldown allows
+        if (Input.GetKeyDown(KeyCode.E) && transformationTimer <= 0) {
+            isMelee = !isMelee; // Toggle between ranged and melee
+            transformationTimer = transformationCooldown; // Reset transformation cooldown
+
+            Debug.Log($"Transformed to {(isMelee ? "Melee" : "Ranged")} mode!");
+        }
+    }
+
+    private void HandleDash() {
+        // Reduce the dash cooldown timer
+        if (dashTimer > 0) {
+            dashTimer -= Time.deltaTime;
+        }
+
+        // Only allow dashing in melee mode
+        if (isMelee && Input.GetKeyDown(KeyCode.Space) && dashTimer <= 0) {
+            Dash();
+            dashTimer = dashCooldown; // Reset dash cooldown
+        }
+    }
+
+    private void Dash() {
+        Vector3 dashVector = transform.up * dashDistance; // Dash in the direction the player is facing
+        transform.position += dashVector;
+        Debug.Log("Dashed forward!");
     }
 }

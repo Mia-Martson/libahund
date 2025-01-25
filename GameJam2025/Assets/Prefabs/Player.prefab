@@ -82,6 +82,7 @@ MonoBehaviour:
   moveSpeed: 5
   bulletPrefab: {fileID: 7970564504953020504, guid: d2b8e650af055984cafecee973091657, type: 3}
   firePoint: {fileID: 0}
+  shootCooldown: 0.5
 --- !u!212 &8819253171690056446
 SpriteRenderer:
   m_ObjectHideFlags: 0

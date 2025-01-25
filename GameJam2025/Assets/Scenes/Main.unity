@@ -4514,7 +4514,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  resolutionDropdown: {fileID: 0}
 --- !u!114 &538139128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4685,6 +4684,14 @@ PrefabInstance:
     - target: {fileID: 6873807620210354695, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030437652029429756, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: m_Size.y
+      value: 3.7705708
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030437652029429756, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.10578418
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

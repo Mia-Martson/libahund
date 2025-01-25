@@ -3,6 +3,7 @@ using UnityEngine;
 public class arrow : MonoBehaviour {
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifetime = 3f;
+    [SerializeField] public int damage = 10;
     private Vector2 moveDirection;
 
     private void Start() {
@@ -29,9 +30,20 @@ public class arrow : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Enemy")) {
-            Debug.Log("Enemy hit!");
-            Destroy(collision.gameObject); // Destroy enemy
+        if (collision.CompareTag("Kurat")) {
+            Debug.Log("Kurat hit!");
+
+            bosshealth bossHealth = collision.GetComponent<bosshealth>();
+            //kurat take damage
+            bossHealth.takeDamage(damage);
+            Debug.Log(bossHealth.currentHealth);
+
+            if(bossHealth.currentHealth < 0)
+            {
+                //kurat saab surma
+                Debug.Log("kurat sai surma");
+            }
+
             Destroy(gameObject);          // Destroy arrow
         }
     }

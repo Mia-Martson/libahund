@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5d113551baff84887ebc2116769d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAttacks: 3
+  maxAttacks: 2
   attackInterval: 0.1
 --- !u!1102 &-4974283072469701287
 AnimatorState:

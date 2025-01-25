@@ -143,8 +143,8 @@ MonoBehaviour:
   maxHealth: 5
   bulletPrefab: {fileID: 3979475569691752347, guid: 2bb4f44ce7658e145ae187830b036452, type: 3}
   shootInterval: 1
-  numberOfBulletsInStandardAttack: 20
-  numberOfBulletsInCircleAttack: 200
+  numberOfBulletsInStandardAttack: 12
+  numberOfBulletsInCircleAttack: 60
   bulletSpeed: 2
   waveOffsetAngle: 0
   waveAngleIncrement: 15

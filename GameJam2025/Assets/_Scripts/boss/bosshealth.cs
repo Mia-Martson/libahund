@@ -6,6 +6,7 @@ public class bosshealth : MonoBehaviour
 {
     public int maxHealth = 50;
     public int currentHealth;
+    private Animator bossAnimator;
 
     public GameObject deathEffect; // Optional particle effect or animation for death
 
@@ -14,6 +15,7 @@ public class bosshealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        bossAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,11 +30,17 @@ public class bosshealth : MonoBehaviour
 
         Debug.Log(currentHealth);
 
-        if (currentHealth < 0)
+        if (currentHealth < 25)
         {
-            //kurat saab surma
-            Debug.Log("kurat sai surma");
-            Destroy(gameObject);
+            bossAnimator.SetTrigger("Enraged");
+            bossAnimator.ResetTrigger("CircularAttack");
+            bossAnimator.ResetTrigger("StandardAttack");
+        }
+
+        if(currentHealth > 0)
+        {
+            Debug.Log("Kurat sai surma");
+
         }
     }
 }

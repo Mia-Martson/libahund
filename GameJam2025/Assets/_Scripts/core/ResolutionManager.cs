@@ -36,4 +36,22 @@ public class ResolutionManager : MonoBehaviour {
             camera.backgroundColor = backgroundColor;
         }
     }
+
+    public void ChangeResolution(int option) {
+        switch (option) {
+            case 0: // 320x320
+                SetResolution(320, 320, false);
+                break;
+            case 1: // 640x640
+                SetResolution(640, 640, false);
+                break;
+            case 2: // Fullscreen
+                SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+                break;
+        }
+
+        // Save the resolution setting
+        PlayerPrefs.SetInt("ResolutionOption", option);
+        PlayerPrefs.Save();
+    }
 }

@@ -30,13 +30,18 @@ public class PlayerController : MonoBehaviour {
     private Vector2 moveInput;                                   // Input for movement
     private Vector2 mousePosition;                               // Mouse position for aiming
 
+    private SpriteRenderer spriteRenderer; 
+
+    private bool isWalking = false;
     private void Start() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>(); // Get the Animator component
         SetMode(false); // Start in ranged mode
     }
 
     void Update() {
         HandleMovement();
+        HandleAnimations();
         HandleShooting();
         HandleTransformation();
         HandleDash();
@@ -53,6 +58,10 @@ public class PlayerController : MonoBehaviour {
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
         //transform.up = direction;
         firePoint.up = direction;
+        // Flip sprite based on movement direction
+        if (moveInput.x != 0) {
+            spriteRenderer.flipX = moveInput.x < 0;
+        }
     }
 
     private void HandleShooting() {
@@ -114,5 +123,12 @@ public class PlayerController : MonoBehaviour {
         Vector3 dashVector = transform.up * dashDistance; // Dash in the direction the player is facing
         transform.position += dashVector;
         Debug.Log("Dashed forward!");
+    }
+
+    private void HandleAnimations() {
+        // Update animation parameters
+        // isWalking = moveInput.magnitude > 0;  True if player is moving
+        isWalking = Input.GetAxis("Horizontal")!=0 || Input.GetAxis("Vertical")!=0;
+        animator.SetBool("isWalking", isWalking);
     }
 }

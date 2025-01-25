@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 5f;
+    public float bulletTimeToLive = 5f;
     [SerializeField] public int damage;
     private Vector2 moveDirection;
 
@@ -16,7 +17,7 @@ public class Bullet : MonoBehaviour
         transform.Translate(moveDirection * speed * Time.deltaTime);
 
         // Optional: Destroy bullet after a certain time to avoid clutter
-        Destroy(gameObject, 2f);
+        Destroy(gameObject,bulletTimeToLive);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

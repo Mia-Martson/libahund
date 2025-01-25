@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxAttacks: 1
-  AttackInterval: 0.1
+  AttackInterval: 0.41
 --- !u!1102 &-721366228751072662
 AnimatorState:
   serializedVersion: 6
@@ -379,7 +379,7 @@ AnimatorStateMachine:
     m_Position: {x: 20, y: -270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -721366228751072662}
-    m_Position: {x: -290, y: 20, z: 0}
+    m_Position: {x: -290, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4974283072469701287}
     m_Position: {x: 30, y: -60, z: 0}

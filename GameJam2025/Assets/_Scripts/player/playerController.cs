@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour {
     private SpriteRenderer spriteRenderer; 
 
     private bool isWalking = false;
+
+    [SerializeField] private ParticleSystem runParticles; // Reference to the particle system
+
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>(); // Get the Animator component
@@ -67,6 +70,12 @@ public class PlayerController : MonoBehaviour {
         if (moveInput.x != 0) {
             spriteRenderer.flipX = moveInput.x < 0;
         }
+        // Handle particle effects
+    if (moveInput.magnitude > 0 && !runParticles.isPlaying) {
+        runParticles.Play(); // Play particles when moving
+    } else if (moveInput.magnitude == 0 && runParticles.isPlaying) {
+        runParticles.Stop(); // Stop particles when idle
+    }
     }
 
     private void HandleShooting() {

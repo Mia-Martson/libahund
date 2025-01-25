@@ -6,7 +6,8 @@ using UnityEngine;
 public class boss_run : StateMachineBehaviour
 {
     public float speed = 2f;
-    public float attackRange = 5f;
+    public float standardAttackRange = 10f;
+
     
     Transform player;
     Rigidbody2D rb;
@@ -30,17 +31,25 @@ public class boss_run : StateMachineBehaviour
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed  * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
 
-        
+
 
         //kui peaks ründama
         //if boss should attack
         //otsustamisrünnakutteha
         //teevastavatrünnakut
         //pane vastav attack trigger
-        
-        if(Vector2.Distance(player.position, rb.position) <= attackRange)
+
+        //circular attack logic
+        if (Vector2.Distance(player.position, rb.position) > standardAttackRange)
         {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("CircularAttack");
+        }
+
+
+        //standard attack logic
+        if (Vector2.Distance(player.position, rb.position) <= standardAttackRange)
+        {
+            animator.SetTrigger("StandardAttack");
         }
         
     }
@@ -48,7 +57,8 @@ public class boss_run : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("Attack");
+        animator.ResetTrigger("StandardAttack");
+        animator.ResetTrigger("CircularAttack");
     }
 
 }

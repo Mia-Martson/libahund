@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class bosshealth : MonoBehaviour
 {
-    public float maxHealth = 50f;
-    public float currentHealth;
+    public int maxHealth = 50;
+    public int currentHealth;
 
     public GameObject deathEffect; // Optional particle effect or animation for death
 
@@ -22,8 +22,17 @@ public class bosshealth : MonoBehaviour
         
     }
 
-    public void takeDamage()
+    public void takeDamage(int damage)
     {
-     //   currentHealth -= damage;
+        currentHealth -= damage;
+
+        Debug.Log(currentHealth);
+
+        if (currentHealth < 0)
+        {
+            //kurat saab surma
+            Debug.Log("kurat sai surma");
+            Destroy(gameObject);
+        }
     }
 }

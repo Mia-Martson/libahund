@@ -122,7 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1509290825
+--- !u!1001 &1198944874
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -132,11 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3126022382670543738, guid: da311d36233490f4986164e9fbaf4f1a, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4058384996416039581, guid: da311d36233490f4986164e9fbaf4f1a, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
+    - target: {fileID: 3126022382670543738, guid: da311d36233490f4986164e9fbaf4f1a, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7019402193451796412, guid: da311d36233490f4986164e9fbaf4f1a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -343,6 +343,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BOSS
       objectReference: {fileID: 0}
+    - target: {fileID: 7959105539396256279, guid: 8e087504cdbbf04498ba49c98da70f1d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959105539396256279, guid: 8e087504cdbbf04498ba49c98da70f1d, type: 3}
+      propertyPath: m_TagString
+      value: Kurat
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -353,5 +361,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1543288084}
-  - {fileID: 1509290825}
+  - {fileID: 1198944874}
   - {fileID: 7379963745738212717}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3748796458724642885}
   - component: {fileID: 216843015801906659}
   - component: {fileID: 8597599550289460714}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BOSS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c560f079d66e8f147b200a3da6367750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 0
+  deathEffect: {fileID: 0}
 --- !u!114 &3748796458724642885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41ee8f496ba310429ae4a77bb3424be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 5
   bulletPrefab: {fileID: 3979475569691752347, guid: 2bb4f44ce7658e145ae187830b036452, type: 3}
   shootInterval: 1
   numberOfBullets: 20

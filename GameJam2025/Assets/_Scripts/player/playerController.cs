@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class PlayerController : MonoBehaviour {
     [Header("Animation Controllers")]
@@ -21,7 +23,10 @@ public class PlayerController : MonoBehaviour {
     [Header("Melee Dash Settings")]
     [SerializeField] private float dashDistance = 5f;            // Distance covered by the dash
     [SerializeField] private float dashCooldown = 1f;            // Cooldown time for dashing
+    [SerializeField] private float dashSpeedMultiplier = 7f; // How much faster the player moves during a dash
+    [SerializeField] private float dashDuration = 0.1f;      // Duration of the dash in seconds
 
+    private bool isDashing = false;  
     private bool isMelee = false;                                // Tracks current mode (false = ranged, true = melee)
     private float shootTimer = 0f;                               // Timer for shooting cooldown
     private float transformationTimer = 0f;                     // Timer for transformation cooldown
@@ -33,6 +38,9 @@ public class PlayerController : MonoBehaviour {
     private SpriteRenderer spriteRenderer; 
 
     private bool isWalking = false;
+
+    [SerializeField] private ParticleSystem runParticles; // Reference to the particle system
+
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>(); // Get the Animator component
@@ -62,6 +70,12 @@ public class PlayerController : MonoBehaviour {
         if (moveInput.x != 0) {
             spriteRenderer.flipX = moveInput.x < 0;
         }
+        // Handle particle effects
+    if (moveInput.magnitude > 0 && !runParticles.isPlaying) {
+        runParticles.Play(); // Play particles when moving
+    } else if (moveInput.magnitude == 0 && runParticles.isPlaying) {
+        runParticles.Stop(); // Stop particles when idle
+    }
     }
 
     private void HandleShooting() {
@@ -97,8 +111,52 @@ public class PlayerController : MonoBehaviour {
             Debug.Log($"Transformed to {(isMelee ? "Melee" : "Ranged")} mode!");
         }
     }
+    private void Dash() {
+    if (!isDashing) {
+        StartCoroutine(DashCoroutine());
+    }
+}
+
+    private IEnumerator DashCoroutine() {
+        isDashing = true; // Set dashing to true
+
+        float originalSpeed = isMelee ? meleeSpeed : rangedSpeed; // Save the current speed
+        float boostedSpeed = originalSpeed * dashSpeedMultiplier; // Calculate boosted speed
+
+        if (isMelee) {
+            meleeSpeed = boostedSpeed; // Temporarily increase melee speed
+        } else {
+            rangedSpeed = boostedSpeed; // (Optional) Adjust ranged speed if needed
+        }
+
+        Debug.Log("Started dashing!");
+
+        yield return new WaitForSeconds(dashDuration); // Wait for the dash duration
+
+        if (isMelee) {
+            meleeSpeed = originalSpeed; // Restore original melee speed
+        } else {
+            rangedSpeed = originalSpeed; // Restore ranged speed if changed
+        }
+
+        isDashing = false; // Reset dashing
+        Debug.Log("Finished dashing!");
+    }
 
     private void HandleDash() {
+    // Reduce the dash cooldown timer
+    if (dashTimer > 0) {
+        dashTimer -= Time.deltaTime;
+    }
+
+    // Allow dashing if cooldown has finished
+    if (isMelee && Input.GetKeyDown(KeyCode.Space) && dashTimer <= 0) {
+        Dash();
+        dashTimer = dashCooldown; // Reset dash cooldown
+    }
+}
+
+    /*private void HandleDash() {
         // Reduce the dash cooldown timer
         if (dashTimer > 0) {
             dashTimer -= Time.deltaTime;
@@ -109,7 +167,7 @@ public class PlayerController : MonoBehaviour {
             Dash();
             dashTimer = dashCooldown; // Reset dash cooldown
         }
-    }
+    }*/
 
     private void SetMode(bool meleeMode) {
         // Update the Animator Controller
@@ -118,12 +176,12 @@ public class PlayerController : MonoBehaviour {
         // Update other properties (like speed or weapons) if needed
         Debug.Log($"Switched to {(meleeMode ? "Melee" : "Ranged")} mode!");
     }
-
+    /*
     private void Dash() {
         Vector3 dashVector = firePoint.up * dashDistance; // Dash in the direction the player is facing
         transform.position += dashVector;
         Debug.Log("Dashed forward!");
-    }
+    }*/
 
     private void HandleAnimations() {
         // Update animation parameters

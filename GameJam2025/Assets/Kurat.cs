@@ -16,6 +16,7 @@ public class Kurat : MonoBehaviour
     [Header("AttackPlayer")]
     [SerializeField] float attackPlayerSpeed;
     [SerializeField] Transform player;
+    private Vector2 playerPosition;
 
     [Header("Other")]
     [SerializeField] Transform goundCheckUp;
@@ -27,8 +28,6 @@ public class Kurat : MonoBehaviour
     private bool isTouchingDown;
     private bool isTouchingWall;
     private bool hasPlayerPositon;
-
-    private Vector2 playerPosition;
 
     private bool facingLeft = true;
     private bool goingUp = true;
@@ -50,7 +49,7 @@ public class Kurat : MonoBehaviour
         isTouchingUp = Physics2D.OverlapCircle(goundCheckUp.position, groundCheckRadius, groundLayer);
         isTouchingDown = Physics2D.OverlapCircle(goundCheckDown.position, groundCheckRadius, groundLayer);
         isTouchingWall = Physics2D.OverlapCircle(goundCheckWall.position, groundCheckRadius, groundLayer);
-        AttackUpNDownState();
+        IdelState();
     }
 
     void RandomStatePicker()
@@ -115,6 +114,16 @@ public class Kurat : MonoBehaviour
         enemyRB.velocity = attackMovementSpeed * attackMovementDirection;
     }
 
+    public void AttackPlayer()
+    {
+        //take player position
+        playerPosition = player.position - transform.position;
+        //normalize player position
+        playerPosition.Normalize();
+        //attack on that position
+        enemyRB.velocity = playerPosition * attackPlayerSpeed;
+    }
+
     public void AttackPlayerState()
     {
 
@@ -164,6 +173,7 @@ public class Kurat : MonoBehaviour
 
     void Flip()
     {
+        Debug.Log("kuratflipped");
         facingLeft = !facingLeft;
         idelMovementDirection.x *= -1;
         attackMovementDirection.x *= -1;

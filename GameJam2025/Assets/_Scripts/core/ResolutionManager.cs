@@ -6,7 +6,6 @@ public class ResolutionManager : MonoBehaviour {
     public static ResolutionManager Instance; // Singleton instance
 
     [SerializeField] private Color backgroundColor = Color.black; // Color for empty screen space
-    [SerializeField] private TMP_Dropdown resolutionDropdown; // dropdown
     private void Awake() {
         // Ensure only one ResolutionManager exists
         if (Instance == null) {
@@ -14,20 +13,6 @@ public class ResolutionManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
         } else {
             Destroy(gameObject);
-        }
-    }
-
-    private void Start() {
-        // Add listener to the dropdown for resolution changes
-        if (resolutionDropdown != null) {
-            resolutionDropdown.onValueChanged.AddListener(ChangeResolution);
-            // Set the dropdown value to the saved resolution or default to 0
-            int savedResolution = PlayerPrefs.GetInt("ResolutionOption", 0);
-            resolutionDropdown.value = savedResolution;
-            resolutionDropdown.RefreshShownValue(); // Update the dropdown visually
-            ChangeResolution(savedResolution); // Apply the saved resolution
-        } else {
-            Debug.LogError("Resolution Dropdown is not assigned in the Inspector!");
         }
     }
 

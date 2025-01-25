@@ -16,6 +16,6 @@ public class Bullet : MonoBehaviour
         transform.Translate(moveDirection * speed * Time.deltaTime);
 
         // Optional: Destroy bullet after a certain time to avoid clutter
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 2f);
     }
 }

@@ -11,8 +11,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Movement Settings")]
     [SerializeField] private float rangedSpeed = 5f;   // Movement speed in ranged mode
     [SerializeField] private float meleeSpeed = 8f;    // Movement speed in melee mode
-    [SerializeField] private Vector2 minBounds; // Bottom-left corner of the map
-    [SerializeField] private Vector2 maxBounds; // Top-right corner of the map
+
 
     [Header("Shooting Settings")]
     [SerializeField] private GameObject bulletPrefab;  // Prefab for ranged bullets
@@ -61,6 +60,12 @@ public class PlayerController : MonoBehaviour {
         moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         float currentSpeed = isMelee ? meleeSpeed : rangedSpeed;
         transform.Translate(moveInput * currentSpeed * Time.deltaTime, Space.World);
+        
+        if(transform.position.x < -9) transform.position = new Vector3(-9, transform.position.y, transform.position.z);
+        if(transform.position.x > 9) transform.position = new Vector3(9, transform.position.y, transform.position.z);
+        if (transform.position.y < -9) transform.position = new Vector3(transform.position.x, -9, transform.position.z);
+        if (transform.position.y > 9) transform.position = new Vector3(transform.position.x, 9, transform.position.z);
+
 
         // Rotate the player towards the mouse
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

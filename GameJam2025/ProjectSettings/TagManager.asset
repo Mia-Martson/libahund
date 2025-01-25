@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Kurat
   - MANGIJA
+  - Wall
   layers:
   - Default
   - TransparentFX

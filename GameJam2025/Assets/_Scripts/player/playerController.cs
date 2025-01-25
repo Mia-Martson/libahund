@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
     [Header("Movement Settings")]
     [SerializeField] private float rangedSpeed = 5f;   // Movement speed in ranged mode
     [SerializeField] private float meleeSpeed = 8f;    // Movement speed in melee mode
+    [SerializeField] private Vector2 minBounds; // Bottom-left corner of the map
+    [SerializeField] private Vector2 maxBounds; // Top-right corner of the map
 
     [Header("Shooting Settings")]
     [SerializeField] private GameObject bulletPrefab;  // Prefab for ranged bullets
@@ -21,7 +23,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float transformationCooldown = 5f;  // Cooldown time for transforming
 
     [Header("Melee Dash Settings")]
-    [SerializeField] private float dashDistance = 5f;            // Distance covered by the dash
     [SerializeField] private float dashCooldown = 1f;            // Cooldown time for dashing
     [SerializeField] private float dashSpeedMultiplier = 7f; // How much faster the player moves during a dash
     [SerializeField] private float dashDuration = 0.1f;      // Duration of the dash in seconds

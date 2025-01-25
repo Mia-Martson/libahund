@@ -4495,7 +4495,7 @@ GameObject:
   - component: {fileID: 1003260007}
   m_Layer: 0
   m_Name: Collider (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4570,11 +4570,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: waveAngleIncrement
-      value: 25
+      value: 51.8
       objectReference: {fileID: 0}
     - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: numberOfBulletsInCircleAttack
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: numberOfBulletsInStandardAttack
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 856097894288727591, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: m_Name
@@ -5811,7 +5815,7 @@ GameObject:
   - component: {fileID: 1494965715}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5847,7 +5851,7 @@ GameObject:
   - component: {fileID: 1629559283}
   m_Layer: 0
   m_Name: Collider (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5970,7 +5974,7 @@ GameObject:
   - component: {fileID: 1910191715}
   m_Layer: 0
   m_Name: Collider (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6047,7 +6051,7 @@ GameObject:
   - component: {fileID: 1915551815}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6120,6 +6124,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+      propertyPath: maxBounds.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+      propertyPath: maxBounds.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+      propertyPath: minBounds.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+      propertyPath: minBounds.y
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 5632689670696934356, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
       propertyPath: m_Name
       value: Player

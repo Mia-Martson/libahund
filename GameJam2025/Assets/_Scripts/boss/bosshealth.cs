@@ -25,5 +25,14 @@ public class bosshealth : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
+
+        Debug.Log(currentHealth);
+
+        if (currentHealth < 0)
+        {
+            //kurat saab surma
+            Debug.Log("kurat sai surma");
+            Destroy(gameObject);
+        }
     }
 }

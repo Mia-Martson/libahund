@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class boss : MonoBehaviour
 {
-    [SerializeField] int health;
-    [SerializeField] int maxHealth = 5;
-
-
     public GameObject bulletPrefab; // Assign your bullet prefab here
     public float shootInterval = 1f; // Time between each circle
     public int numberOfBulletsInStandardAttack = 20; // How many bullets in the circle
@@ -19,7 +15,6 @@ public class boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -87,13 +82,4 @@ public class boss : MonoBehaviour
         }
     }
     
-    public void TakeDamage(int damageAmount)
-    {
-        health -= damageAmount;
-
-        if(health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 }

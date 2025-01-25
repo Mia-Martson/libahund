@@ -32,18 +32,9 @@ public class arrow : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Kurat")) {
             Debug.Log("Kurat hit!");
-
             bosshealth bossHealth = collision.GetComponent<bosshealth>();
             //kurat take damage
             bossHealth.takeDamage(damage);
-            Debug.Log(bossHealth.currentHealth);
-
-            if(bossHealth.currentHealth < 0)
-            {
-                //kurat saab surma
-                Debug.Log("kurat sai surma");
-            }
-
             Destroy(gameObject);          // Destroy arrow
         }
     }

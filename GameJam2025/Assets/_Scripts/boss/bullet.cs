@@ -26,6 +26,8 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("inimenesaipihta");
             // Destroy the bullet
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(damage);
             Destroy(gameObject);
         }
 

@@ -4630,6 +4630,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: laserPrefab
+      value: 
+      objectReference: {fileID: 6920364922133956132, guid: 365cc80641725594f9d48af4fdb41236, type: 3}
+    - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: waveAngleIncrement
       value: 51.8
       objectReference: {fileID: 0}

@@ -1,6 +1,11 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    [Header("Animation Controllers")]
+    [SerializeField] private RuntimeAnimatorController rangedController; // Ranged mode animations
+    [SerializeField] private RuntimeAnimatorController meleeController;  // Melee mode animations
+
+    private Animator animator;       // Reference to the Animator
     [Header("Movement Settings")]
     [SerializeField] private float rangedSpeed = 5f;   // Movement speed in ranged mode
     [SerializeField] private float meleeSpeed = 8f;    // Movement speed in melee mode
@@ -25,6 +30,11 @@ public class PlayerController : MonoBehaviour {
     private Vector2 moveInput;                                   // Input for movement
     private Vector2 mousePosition;                               // Mouse position for aiming
 
+    private void Start() {
+        animator = GetComponent<Animator>(); // Get the Animator component
+        SetMode(false); // Start in ranged mode
+    }
+
     void Update() {
         HandleMovement();
         HandleShooting();
@@ -41,7 +51,8 @@ public class PlayerController : MonoBehaviour {
         // Rotate the player towards the mouse
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
-        transform.up = direction;
+        //transform.up = direction;
+        firePoint.up = direction;
     }
 
     private void HandleShooting() {
@@ -71,6 +82,7 @@ public class PlayerController : MonoBehaviour {
         // Transform when E is pressed and cooldown allows
         if (Input.GetKeyDown(KeyCode.E) && transformationTimer <= 0) {
             isMelee = !isMelee; // Toggle between ranged and melee
+            SetMode(isMelee);
             transformationTimer = transformationCooldown; // Reset transformation cooldown
 
             Debug.Log($"Transformed to {(isMelee ? "Melee" : "Ranged")} mode!");
@@ -88,6 +100,14 @@ public class PlayerController : MonoBehaviour {
             Dash();
             dashTimer = dashCooldown; // Reset dash cooldown
         }
+    }
+
+    private void SetMode(bool meleeMode) {
+        // Update the Animator Controller
+        animator.runtimeAnimatorController = meleeMode ? meleeController : rangedController;
+
+        // Update other properties (like speed or weapons) if needed
+        Debug.Log($"Switched to {(meleeMode ? "Melee" : "Ranged")} mode!");
     }
 
     private void Dash() {

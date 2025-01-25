@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 054fc4c0e84f6a74dab4cedbd71a6eac
+guid: 5053412d972087b4dbdff37fe21d7c31
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -46,8 +46,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wolf_sheet_0
+      name: human_sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -105,20 +105,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 390ef8e43d2c1de48a9319a17574a5d2
-      internalID: 2088754715
+      spriteID: 36999c27710d180418420177eb4b1a8a
+      internalID: 467498403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_sheet_1
+      name: human_sheet_1
       rect:
         serializedVersion: 2
         x: 16
@@ -126,20 +126,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cea208f1fedc7744ae1c813d257f617
-      internalID: 113548733
+      spriteID: bd53941ae1320bf44a711fc67cecedbe
+      internalID: 297075922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_sheet_2
+      name: human_sheet_2
       rect:
         serializedVersion: 2
         x: 32
@@ -147,20 +147,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7db4acab3c25ab4ea1a27942ea91201
-      internalID: 1445880620
+      spriteID: f5357ee4662afda46b7b36291f20c5f7
+      internalID: -2089477974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_sheet_3
+      name: human_sheet_3
       rect:
         serializedVersion: 2
         x: 48
@@ -168,14 +168,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d0e16cec55357f49b7fb7d9b3229ab9
-      internalID: -192161098
+      spriteID: 91807585ccd2402439b8ead76d3d2aba
+      internalID: 1909334776
       vertices: []
       indices: 
       edges: []
@@ -184,17 +184,17 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wolf_sheet_0: 2088754715
-      wolf_sheet_1: 113548733
-      wolf_sheet_2: 1445880620
-      wolf_sheet_3: -192161098
+      human_sheet_0: 467498403
+      human_sheet_1: 297075922
+      human_sheet_2: -2089477974
+      human_sheet_3: 1909334776
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

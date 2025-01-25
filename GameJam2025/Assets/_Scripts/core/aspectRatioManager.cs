@@ -10,6 +10,11 @@ public class aspectRatioManager : MonoBehaviour {
     private void Start() {
         mainCamera = Camera.main;
 
+        if (mainCamera == null) {
+            Debug.LogError("No Camera found! Ensure there is a Camera tagged as 'MainCamera' in the scene.");
+            return;
+        }
+
         // Set the background color for letterboxing
         mainCamera.backgroundColor = backgroundColor;
 
@@ -18,6 +23,12 @@ public class aspectRatioManager : MonoBehaviour {
     }
 
     private void Update() {
+        if (mainCamera == null) {
+            // Try to reassign the camera if it has been destroyed or is missing
+            mainCamera = Camera.main;
+            if (mainCamera == null) return; // Exit if no camera is found
+        }
+
         // Check if window dimensions or aspect ratio have changed
         if (Screen.width / (float)Screen.height != 1f) {
             UpdateViewport();
@@ -25,14 +36,17 @@ public class aspectRatioManager : MonoBehaviour {
     }
 
     private void UpdateViewport() {
+        if (mainCamera == null) return; // Prevent further execution if no camera is assigned
+
         float screenAspect = (float)Screen.width / Screen.height;
         float targetAspect = 1f; // Square aspect ratio (1:1)
+
         // Enforce 1:1 aspect ratio and minimum height
         if (Screen.height < minGameWidth) {
             int targetWidth = Mathf.RoundToInt(Screen.height); // Width matches height for 1:1
             Screen.SetResolution(targetWidth, Screen.height, false);
             return; // Exit to avoid repeated adjustments in one frame
-            }
+        }
 
         // Handle camera viewport adjustments for 1:1 aspect ratio
         if (screenAspect > targetAspect) {

@@ -76,9 +76,9 @@ public class PlayerController : MonoBehaviour {
             shootTimer = shootCooldown; // Reset shooting cooldown
         }
     }
-
     private void Shoot() {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        // Instantiate the bullet with the firePoint's position and rotation
+        GameObject arrow = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         Debug.Log("Bullet Fired!");
     }
 
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Dash() {
-        Vector3 dashVector = transform.up * dashDistance; // Dash in the direction the player is facing
+        Vector3 dashVector = firePoint.up * dashDistance; // Dash in the direction the player is facing
         transform.position += dashVector;
         Debug.Log("Dashed forward!");
     }

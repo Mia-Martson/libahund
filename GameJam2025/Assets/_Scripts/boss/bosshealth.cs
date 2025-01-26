@@ -60,6 +60,7 @@ public class bosshealth : MonoBehaviour
 
         if(currentHealth < 0)
         {
+            FindObjectOfType<WinLoseManager>().ShowWinScreen();
             Debug.Log("Kurat sai surma");
         }
     }

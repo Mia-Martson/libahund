@@ -85,5 +85,29 @@ public class SceneChanger : MonoBehaviour {
         Debug.Log("Game Quit!");
         Application.Quit();
     }
+
+    public void RestartLevel() {
+        if (fadeImage != null) {
+            StartCoroutine(FadeOutAndRestart());
+        } else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    private IEnumerator FadeOutAndRestart() {
+        float elapsedTime = 0f;
+        Color color = fadeImage.color;
+
+        // Fade to black
+        while (elapsedTime < fadeDuration) {
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Clamp01(elapsedTime / fadeDuration);
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        // Reload the current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
 

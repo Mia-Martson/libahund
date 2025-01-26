@@ -114,7 +114,7 @@ public class boss : MonoBehaviour
         // Spawn 4 lasers in an X pattern
         for (int i = 0; i < 4; i++)
         {
-            float angle = 45f + (i * 90f); // 45 degrees apart for X pattern
+            float angle = (i * 90f); // 45 degrees apart for X pattern
             Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
 
             // Spawn the laser

@@ -44,6 +44,7 @@ public class bosshealth : MonoBehaviour
             bossAnimator.SetTrigger("Enraged");
             bossAnimator.ResetTrigger("CircularAttack");
             bossAnimator.ResetTrigger("StandardAttack");
+            bossAnimator.ResetTrigger("SingularBulletAttack");
         }
 
         if(currentHealth < 0)

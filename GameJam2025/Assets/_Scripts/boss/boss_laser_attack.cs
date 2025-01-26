@@ -50,6 +50,7 @@ public class boss_laser_attack : StateMachineBehaviour
             Destroy(laser);
         }
         boss.activeLasers.Clear();
+        animator.ResetTrigger("EnragedIdle");
     }
 
     // Method to clean up lasers

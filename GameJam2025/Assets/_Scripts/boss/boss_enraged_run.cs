@@ -35,7 +35,7 @@ public class boss_enraged_run : StateMachineBehaviour
         if (Vector2.Distance(player.position, rb.position) <= attackRange && attackCooldownTimer >= attackCooldown)
         {
             // Randomly decide the attack
-            int attackDecision = Random.Range(0, 3); // Random number between 0 and 2
+            int attackDecision = Random.Range(0, 4); // Random number between 0 and 3
             switch (attackDecision)
             {
                 case 0:
@@ -46,6 +46,9 @@ public class boss_enraged_run : StateMachineBehaviour
                     break;
                 case 2:
                     animator.SetTrigger("EnragedSingularBulletAttack"); // Perform Singular Bullet Circle Attack
+                    break;
+                case 3:
+                    animator.SetTrigger("EnragedLaserAttack");
                     break;
             }
 
@@ -59,5 +62,6 @@ public class boss_enraged_run : StateMachineBehaviour
         animator.ResetTrigger("EnragedStandardAttack");
         animator.ResetTrigger("EnragedCircularAttack");
         animator.ResetTrigger("EnragedSingularBulletAttack");
+        animator.ResetTrigger("EnragedLaserAttack");
     }
 }

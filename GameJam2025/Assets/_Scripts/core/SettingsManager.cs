@@ -6,9 +6,12 @@ public class SettingsController : MonoBehaviour {
     [SerializeField] private Slider sfxSlider;
 
     private void Start() {
+        Debug.Log($"Music Slider Assigned: {musicSlider != null}");
+        Debug.Log($"SFX Slider Assigned: {sfxSlider != null}");
+
         // Temporarily remove listeners to avoid triggering onValueChanged during initialization
-        musicSlider.onValueChanged.RemoveAllListeners();
-        sfxSlider.onValueChanged.RemoveAllListeners();
+        if (musicSlider != null) musicSlider.onValueChanged.RemoveAllListeners();
+        if (sfxSlider != null) sfxSlider.onValueChanged.RemoveAllListeners();
 
         // Initialize sliders with saved volume values
         if (SoundManager.Instance != null) {
@@ -19,14 +22,13 @@ public class SettingsController : MonoBehaviour {
             Debug.Log("Music Volume: " + musicVolume);
             Debug.Log("SFX Volume: " + sfxVolume);
 
-            // Set the slider values
-            musicSlider.value = musicVolume;
-            sfxSlider.value = sfxVolume;
+            if (musicSlider != null) musicSlider.value = musicVolume;
+            if (sfxSlider != null) sfxSlider.value = sfxVolume;
         }
 
         // Reassign listeners after initialization
-        musicSlider.onValueChanged.AddListener(SetMusicVolume);
-        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        if (musicSlider != null) musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        if (sfxSlider != null) sfxSlider.onValueChanged.AddListener(SetSFXVolume);
     }
 
     private void SetMusicVolume(float volume) {
@@ -45,8 +47,12 @@ public class SettingsController : MonoBehaviour {
     }
 
     private void OnDestroy() {
-        // Remove listeners to prevent memory leaks
-        musicSlider.onValueChanged.RemoveListener(SetMusicVolume);
-        sfxSlider.onValueChanged.RemoveListener(SetSFXVolume);
+        // Remove listeners only if the sliders are not null
+        if (musicSlider != null) {
+            musicSlider.onValueChanged.RemoveListener(SetMusicVolume);
+        }
+        if (sfxSlider != null) {
+            sfxSlider.onValueChanged.RemoveListener(SetSFXVolume);
+        }
     }
 }

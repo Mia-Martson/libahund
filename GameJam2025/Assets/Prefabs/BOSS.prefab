@@ -161,7 +161,7 @@ MonoBehaviour:
   numberOfBulletsInEnragedCircleAttack: 200
   bulletSpeed: 2
   waveOffsetAngle: 0
-  waveAngleIncrement: 15
+  waveAngleIncrement: 21
   laserRotationSpeed: 20
   activeLasers: []
 --- !u!50 &4417060118756080818

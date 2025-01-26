@@ -5351,6 +5351,10 @@ PrefabInstance:
       propertyPath: DamageableStates.Array.data[5]
       value: kurat_enraged_attack
       objectReference: {fileID: 0}
+    - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: DamageableStates.Array.data[6]
+      value: kurat_enraged_attack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6391,7 +6395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1401143186
 RectTransform:
   m_ObjectHideFlags: 0

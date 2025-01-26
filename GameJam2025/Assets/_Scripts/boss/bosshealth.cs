@@ -39,7 +39,7 @@ public class bosshealth : MonoBehaviour
         
         Debug.Log(currentHealth);
 
-        if (currentHealth < 25)
+        if (currentHealth < (maxHealth/2))
         {
             bossAnimator.SetTrigger("Enraged");
             bossAnimator.ResetTrigger("CircularAttack");

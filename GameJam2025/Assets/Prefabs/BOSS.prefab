@@ -130,6 +130,10 @@ MonoBehaviour:
   - kurat_attack
   - circular_attack
   - kurat_enragedidle
+  - kurat_singular_bullet_circle_attack
+  - kurat_enraged_attack
+  - kurat_enraged_circular_attack
+  - kurat_enraged_singuler_bullet_circle_attack
   deathEffect: {fileID: 0}
 --- !u!114 &399922918413966481
 MonoBehaviour:
@@ -148,6 +152,9 @@ MonoBehaviour:
   shootInterval: 1
   numberOfBulletsInStandardAttack: 12
   numberOfBulletsInCircleAttack: 60
+  enragedShootInterval: 1
+  numberOfBulletsInEnragedStandardAttack: 20
+  numberOfBulletsInEnragedCircleAttack: 200
   bulletSpeed: 2
   waveOffsetAngle: 0
   waveAngleIncrement: 15

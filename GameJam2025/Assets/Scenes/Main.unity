@@ -5673,6 +5673,10 @@ PrefabInstance:
       propertyPath: indicatorDuration
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: waveAngleIncrement
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 856097894288727591, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: m_Name
       value: BOSS

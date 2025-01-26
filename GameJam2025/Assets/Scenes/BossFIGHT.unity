@@ -195,6 +195,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+      propertyPath: meleeEffectPrefab
+      value: 
+      objectReference: {fileID: 5235112088937611981, guid: 402b8cfc48327ec4bbafa3bd706ff8f3, type: 3}
     - target: {fileID: 5632689670696934356, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
       propertyPath: m_Name
       value: Player

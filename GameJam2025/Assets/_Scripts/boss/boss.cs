@@ -130,6 +130,9 @@ public class boss : MonoBehaviour
             // Spawn the indicator
             GameObject indicator = Instantiate(laserIndicatorPrefab, transform.position, Quaternion.identity);
             indicator.transform.up = direction; // Align the indicator to the direction
+            Vector3 scale = indicator.transform.localScale; // Get the current scale
+            scale.y = 50; // Modify the y-component
+            indicator.transform.localScale = scale; // Reassign the updated scale
             indicators.Add(indicator);
         }
 

@@ -6829,6 +6829,10 @@ PrefabInstance:
       propertyPath: waveAngleIncrement
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: laserIndicatorPrefab
+      value: 
+      objectReference: {fileID: 1836253247259185305, guid: ac1cb76edb3478f48a5233a14082d4f4, type: 3}
     - target: {fileID: 856097894288727591, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: m_Name
       value: BOSS

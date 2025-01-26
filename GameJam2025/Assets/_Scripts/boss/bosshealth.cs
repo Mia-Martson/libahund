@@ -61,6 +61,7 @@ public class bosshealth : MonoBehaviour
         if(currentHealth < 0)
         {
             FindObjectOfType<WinLoseManager>().ShowWinScreen();
+            bossAnimator.SetTrigger("Dead");
             Debug.Log("Kurat sai surma");
         }
     }

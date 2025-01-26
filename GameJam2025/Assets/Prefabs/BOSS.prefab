@@ -157,7 +157,7 @@ MonoBehaviour:
   numberOfBulletsInStandardAttack: 12
   numberOfBulletsInCircleAttack: 60
   enragedShootInterval: 1
-  numberOfBulletsInEnragedStandardAttack: 20
+  numberOfBulletsInEnragedStandardAttack: 24
   numberOfBulletsInEnragedCircleAttack: 200
   bulletSpeed: 2
   waveOffsetAngle: 0

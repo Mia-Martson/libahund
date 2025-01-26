@@ -125,6 +125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   currentHealth: 0
+  DamageableStates:
+  - kurat_idle
+  - kurat_attack
+  - circular_attack
+  - kurat_enragedidle
   deathEffect: {fileID: 0}
 --- !u!114 &399922918413966481
 MonoBehaviour:
@@ -138,15 +143,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41ee8f496ba310429ae4a77bb3424be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 5
   bulletPrefab: {fileID: 3979475569691752347, guid: 2bb4f44ce7658e145ae187830b036452, type: 3}
+  laserPrefab: {fileID: 0}
   shootInterval: 1
   numberOfBulletsInStandardAttack: 12
   numberOfBulletsInCircleAttack: 60
   bulletSpeed: 2
   waveOffsetAngle: 0
   waveAngleIncrement: 15
+  laserRotationSpeed: 30
+  activeLasers: []
 --- !u!50 &4417060118756080818
 Rigidbody2D:
   serializedVersion: 4

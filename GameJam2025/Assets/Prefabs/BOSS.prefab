@@ -151,7 +151,7 @@ MonoBehaviour:
   bulletSpeed: 2
   waveOffsetAngle: 0
   waveAngleIncrement: 15
-  laserRotationSpeed: 30
+  laserRotationSpeed: 40
   activeLasers: []
 --- !u!50 &4417060118756080818
 Rigidbody2D:

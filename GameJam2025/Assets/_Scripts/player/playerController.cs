@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float meleeCooldown = 0.7f; // Cooldown time between melee attacks
     [SerializeField] private GameObject meleeEffectPrefab; // Prefab for melee effect (e.g., slash sprite)
     [SerializeField] private float offsetDistance = 1.0f; // kaugel attack spawning
-    private bool isDashing = false;  
     public bool isMelee = false;                                // Tracks current mode (false = ranged, true = melee)
+    public bool isDashing = false;                                 // Tracks current mode (false = ranged, true = melee)
     private float shootTimer = 0f;       
     private float meleeTimer = 0f;                         // Timer for shooting cooldown
     public float transformationTimer = 0f;                     // Timer for transformation cooldown

@@ -26,7 +26,7 @@ public class boss_enraged_circular_attack : StateMachineBehaviour
         if (attackCount < MaxAttacks)
         {
             attackTimer += Time.deltaTime; // Increment the timer based on elapsed time
-            Debug.Log($"Attack Timer: {attackTimer}, Attack Count: {attackCount}/{MaxAttacks}");
+           // Debug.Log($"Attack Timer: {attackTimer}, Attack Count: {attackCount}/{MaxAttacks}");
 
             if (attackTimer >= AttackInterval) // Check if the interval has passed
             {
@@ -37,7 +37,7 @@ public class boss_enraged_circular_attack : StateMachineBehaviour
             }
             else
             {
-                Debug.Log($"Waiting for interval: {attackTimer}/{AttackInterval}");
+                //Debug.Log($"Waiting for interval: {attackTimer}/{AttackInterval}");
             }
         }
     }

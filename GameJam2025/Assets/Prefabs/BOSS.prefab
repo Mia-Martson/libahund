@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c560f079d66e8f147b200a3da6367750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 750
   currentHealth: 0
   DamageableStates:
   - kurat_idle
@@ -134,6 +134,7 @@ MonoBehaviour:
   - kurat_enraged_attack
   - kurat_enraged_circular_attack
   - kurat_enraged_singular_bullet_circle_attack
+  - kurat_lasering
   deathEffect: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: d8c35434f4a4d3f45a22c40446c336d5, type: 3}
   failedHurtSound: {fileID: 8300000, guid: 2dffec570d81a2247ad62ff4f2e361e4, type: 3}
@@ -162,7 +163,7 @@ MonoBehaviour:
   bulletSpeed: 2
   waveOffsetAngle: 0
   waveAngleIncrement: 21
-  laserRotationSpeed: 20
+  laserRotationSpeed: 33
   activeLasers: []
   screamSound: {fileID: 8300000, guid: 64c2c23da09f5b64db8e571c198619de, type: 3}
 --- !u!50 &4417060118756080818

@@ -18,6 +18,8 @@ public class bosshealth : MonoBehaviour
     public AudioClip hurtSound;
     public AudioClip failedHurtSound;
 
+    public GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,10 @@ public class bosshealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(player.GetComponent<PlayerHealth>().currentHealth <= 0)
+        {
+            bossAnimator.SetTrigger("Winner");
+        }
     }
 
     public void takeDamage(int damage)
@@ -58,7 +63,7 @@ public class bosshealth : MonoBehaviour
             bossAnimator.ResetTrigger("SingularBulletAttack");
         }
 
-        if(currentHealth < 0)
+        if(currentHealth <= 0)
         {
             FindObjectOfType<WinLoseManager>().ShowWinScreen();
             bossAnimator.SetTrigger("Dead");

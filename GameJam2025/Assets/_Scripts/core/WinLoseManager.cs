@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class WinLoseManager : MonoBehaviour {
     [Header("UI Panels")]
@@ -19,6 +20,8 @@ public class WinLoseManager : MonoBehaviour {
     }
 
     public void ShowWinScreen() {
+        StartCoroutine(WaitAndDoSomething());
+
         if (winPanel != null) {
             winPanel.SetActive(true); // Activate the panel
             winAnimator.Play("WinPanelZoomIn"); // Play the zoom-in animation
@@ -26,9 +29,18 @@ public class WinLoseManager : MonoBehaviour {
     }
 
     public void ShowLoseScreen() {
+        StartCoroutine(WaitAndDoSomething());
+
         if (losePanel != null) {
             losePanel.SetActive(true); // Activate the panel
             loseAnimator.Play("LosePanelZoomIn"); // Play the zoom-in animation
         }
+    }
+
+    IEnumerator WaitAndDoSomething()
+    {
+        Debug.Log("Waiting for 3 seconds...");
+        yield return new WaitForSeconds(3f); // Waits for 3 seconds
+        Debug.Log("Done waiting!");
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 
 public class PlayerController : MonoBehaviour {
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
 
     public AudioClip transformationSound;
+    public PlayerHealth playerHealth;
 
     private bool isWalking = false;
 
@@ -52,16 +54,22 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>(); // Get the Animator component
+        playerHealth = GetComponent<PlayerHealth>();
         SetMode(false); // Start in ranged mode
     }
 
     void Update() {
-        HandleMovement();
-        HandleAnimations();
-        HandleShooting();
-        HandleTransformation();
-        HandleDash();
-        HandleMeleeAttack();
+
+        if (playerHealth.currentHealth > 0)
+        {
+            HandleMovement();
+            HandleAnimations();
+            HandleShooting();
+            HandleTransformation();
+            HandleDash();
+            HandleMeleeAttack();
+        }
+        else animator.SetTrigger("dead_player");
     }
 
     private void HandleMovement() {

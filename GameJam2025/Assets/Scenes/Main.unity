@@ -6210,7 +6210,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6892,7 +6892,7 @@ PrefabInstance:
       objectReference: {fileID: 157317901}
     - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: DamageableStates.Array.data[7]
@@ -10063,6 +10063,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+      propertyPath: Kurat
+      value: 
+      objectReference: {fileID: 1318991746}
+    - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
       propertyPath: abilityBars
       value: 
       objectReference: {fileID: 1994072940}
@@ -10081,6 +10085,10 @@ PrefabInstance:
     - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
       propertyPath: minBounds.y
       value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+      propertyPath: transformationCooldown
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1426940815327535565, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
       propertyPath: Kurat

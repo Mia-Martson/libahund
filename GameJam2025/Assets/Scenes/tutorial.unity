@@ -185,17 +185,18 @@ MonoBehaviour:
     left and right with no feasible end in sight.
 
     The elder came to you looking
-    for aid, the old devils crimes must be repaid...
+    for aid, the old devils'' crimes must be repaid...
 
 
     WASD - move
 
-    E - transform
+    E -
+    transform
 
-    Mouse
-    click - attack
+    Mouse click (witch can hold) - attack
 
-    Space - dodge (while in wolf form)'
+    Space - dodge (while
+    in wolf form)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e7d6f1bf8f0944b4b8bac10667b1966e, type: 2}
   m_sharedMaterial: {fileID: 6348968218652202022, guid: e7d6f1bf8f0944b4b8bac10667b1966e, type: 2}

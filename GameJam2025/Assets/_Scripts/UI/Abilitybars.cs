@@ -8,15 +8,22 @@ public class AbilityBars : MonoBehaviour {
 
     [Header("Dash Bar Settings")]
     [SerializeField] private Image dashBarFill; // Fill for the Dash bar
+    [SerializeField] private Image dashBarBackground;
     [SerializeField] private Color dashReadyColor = Color.cyan; // Oscillation color when ready
 
     [Header("Player Reference")]
     [SerializeField] private PlayerController player; // Reference to the player controller
 
+    [SerializeField] private Image witchIcon;
+    [SerializeField] private Image WolfIcon;
+
+
     private Color transformDefaultColor; // Store the default color for the Transform bar
     private Color dashDefaultColor; // Store the default color for the Dash bar
 
     private void Start() {
+        WolfIcon.gameObject.SetActive(false);
+        witchIcon.gameObject.SetActive(true);
         // Save the initial colors of the bars at runtime
         transformDefaultColor = transformBarFill.color;
         dashDefaultColor = dashBarFill.color;
@@ -56,6 +63,9 @@ public class AbilityBars : MonoBehaviour {
         // Show the Dash bar only in melee mode
         if (player.isMelee) {
             dashBarFill.gameObject.SetActive(true);
+            dashBarBackground.gameObject.SetActive(true);
+            WolfIcon.gameObject.SetActive(true);
+            witchIcon.gameObject.SetActive(false);
 
             // Calculate fill amount
             float fillAmount = Mathf.Clamp01(1f - (dashTimer / dashCooldown)); // Fill as time decreases
@@ -69,6 +79,9 @@ public class AbilityBars : MonoBehaviour {
             }
         } else {
             dashBarFill.gameObject.SetActive(false); // Hide dash bar in ranged mode
+            dashBarBackground.gameObject.SetActive(false);
+            WolfIcon.gameObject.SetActive(false);
+            witchIcon.gameObject.SetActive(true);
         }
     }
 

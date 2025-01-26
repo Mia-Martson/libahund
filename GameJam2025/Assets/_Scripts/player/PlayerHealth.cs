@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
-    private int currentHealth;
+    public int maxHealth = 6;
+    public int currentHealth;
     private PlayerController playerController;
 
     public float invincibilityDuration = 2f; // Duration of the invincibility period in seconds
@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     private bool isInvincible = false; // Tracks if the player is currently invincible
 
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
+    private HeartUIManager heartUIManager;
 
 
 
@@ -20,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         playerController = GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+        heartUIManager = FindObjectOfType<HeartUIManager>(); // Find the HeartUIManager
         
     }
 
@@ -72,4 +74,9 @@ public class PlayerHealth : MonoBehaviour
         isInvincible = false; // End invincibility
         Debug.Log("Player is no longer invincible!");
     }
+
+    public void RegenerateHealth(float regenDelay) {
+    // Start the health regeneration process
+    heartUIManager.StartHealthRegen(regenDelay);
+}
 }

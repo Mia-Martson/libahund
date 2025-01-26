@@ -16,6 +16,7 @@ public class bosshealth : MonoBehaviour
     private float flashDuration = 0.1f;
 
     public AudioClip hurtSound;
+    public AudioClip failedHurtSound;
 
 
     // Start is called before the first frame update
@@ -40,6 +41,7 @@ public class bosshealth : MonoBehaviour
         if (!IsDamageableState()) //if the boss is NOT in the damagable state
         {
             Debug.Log("Boss is invulnerable in the current state!");
+            SoundManager.Instance.PlaySFX(failedHurtSound);
             return;
         }
         currentHealth -= damage;

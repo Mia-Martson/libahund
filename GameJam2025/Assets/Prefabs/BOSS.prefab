@@ -133,9 +133,10 @@ MonoBehaviour:
   - kurat_singular_bullet_circle_attack
   - kurat_enraged_attack
   - kurat_enraged_circular_attack
-  - kurat_enraged_singuler_bullet_circle_attack
+  - kurat_enraged_singular_bullet_circle_attack
   deathEffect: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: d8c35434f4a4d3f45a22c40446c336d5, type: 3}
+  failedHurtSound: {fileID: 8300000, guid: 2dffec570d81a2247ad62ff4f2e361e4, type: 3}
 --- !u!114 &399922918413966481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3979475569691752347, guid: 2bb4f44ce7658e145ae187830b036452, type: 3}
   laserPrefab: {fileID: 6920364922133956132, guid: 365cc80641725594f9d48af4fdb41236, type: 3}
+  laserIndicatorPrefab: {fileID: 1836253247259185305, guid: ac1cb76edb3478f48a5233a14082d4f4, type: 3}
+  indicatorDuration: 1
   shootInterval: 1
   numberOfBulletsInStandardAttack: 12
   numberOfBulletsInCircleAttack: 60

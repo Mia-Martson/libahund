@@ -7,11 +7,13 @@ public class bosshealth : MonoBehaviour
     public int maxHealth = 50;
     public int currentHealth;
     private Animator bossAnimator;
-    public float flashDuration = 0.1f; // Duration of each flash
-    public int flashCount = 1; // Number of flashes
     public List<string> DamageableStates;
     public GameObject deathEffect; // Optional particle effect or animation for death
 
+    private SpriteRenderer myRenderer;
+    private Shader shaderGUItext;
+    private Shader shaderSpritesDefault;
+    private float flashDuration = 0.1f;
 
 
     // Start is called before the first frame update
@@ -19,7 +21,9 @@ public class bosshealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         bossAnimator = GetComponent<Animator>();
-
+        myRenderer = gameObject.GetComponent<SpriteRenderer>();
+        shaderGUItext = Shader.Find("GUI/Text Shader");
+        shaderSpritesDefault = Shader.Find("Sprites/Default");
     }
 
     // Update is called once per frame
@@ -36,10 +40,9 @@ public class bosshealth : MonoBehaviour
             Debug.Log("Boss is invulnerable in the current state!");
             return;
         }
-
         currentHealth -= damage;
-       
-        
+        StartCoroutine(FlashWhite());
+
         Debug.Log(currentHealth);
 
         if (currentHealth < (maxHealth/2))
@@ -53,12 +56,21 @@ public class bosshealth : MonoBehaviour
         if(currentHealth < 0)
         {
             Debug.Log("Kurat sai surma");
-
         }
-
     }
 
+    private IEnumerator FlashWhite()
+    {
+        // Turn the sprite white
+        myRenderer.material.shader = shaderGUItext;
+        myRenderer.color = new Color(0.898039215f, 0.8549019607843137f, 0.854901960f, 1f);
 
+        // Wait for the flash duration
+        yield return new WaitForSeconds(flashDuration);
+
+        myRenderer.material.shader = shaderSpritesDefault;
+        myRenderer.color = Color.white;
+    }
 
     private bool IsDamageableState()
     {

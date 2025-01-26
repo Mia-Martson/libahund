@@ -1,77 +1,85 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Abilitybars : MonoBehaviour {
+public class AbilityBars : MonoBehaviour {
     [Header("Transform Bar Settings")]
-    [SerializeField] private Image transformBarFill;
-    [SerializeField] private float transformCooldown = 5f;
-    [SerializeField] private Color transformReadyColor = Color.yellow;
-    private float transformTimer;
+    [SerializeField] private Image transformBarFill; // Fill for the Transform bar
+    [SerializeField] private Color transformReadyColor = Color.yellow; // Oscillation color when ready
 
     [Header("Dash Bar Settings")]
-    [SerializeField] private Image dashBarFill;
-    [SerializeField] private float dashCooldown = 2f;
-    [SerializeField] private Color dashReadyColor = Color.cyan;
-    private float dashTimer;
+    [SerializeField] private Image dashBarFill; // Fill for the Dash bar
+    [SerializeField] private Color dashReadyColor = Color.cyan; // Oscillation color when ready
 
-    private bool isMelee = false; // Indicates whether the player is in melee mode
-    private bool transformReady = false;
-    private bool dashReady = false;
+    [Header("Player Reference")]
+    [SerializeField] private PlayerController player; // Reference to the player controller
+
+    private Color transformDefaultColor; // Store the default color for the Transform bar
+    private Color dashDefaultColor; // Store the default color for the Dash bar
+
+    private void Start() {
+        // Save the initial colors of the bars at runtime
+        transformDefaultColor = transformBarFill.color;
+        dashDefaultColor = dashBarFill.color;
+    }
 
     private void Update() {
-        UpdateTransformBar();
-        UpdateDashBar();
+        if (player != null) {
+            UpdateTransformBar();
+            UpdateDashBar();
+        }
     }
 
     private void UpdateTransformBar() {
-        if (transformTimer < transformCooldown) {
-            transformTimer += Time.deltaTime;
-            float fillAmount = Mathf.Clamp01(transformTimer / transformCooldown);
-            transformBarFill.fillAmount = fillAmount;
-            transformBarFill.color = Color.Lerp(Color.green, transformReadyColor, Mathf.Sin(Time.time * 5f) * 0.5f + 0.5f);
+        if (player == null) return;
+
+        float transformCooldown = player.transformationCooldown;
+        float transformTimer = player.transformationTimer;
+
+        // Calculate fill amount
+        float fillAmount = Mathf.Clamp01(1f - (transformTimer / transformCooldown)); // Fill as time decreases
+        transformBarFill.fillAmount = fillAmount;
+
+        // Oscillate color when ready
+        if (transformTimer <= 0) {
+            transformBarFill.color = Color.Lerp(transformDefaultColor, transformReadyColor, Mathf.Sin(Time.time * 5f) * 0.5f + 0.5f);
         } else {
-            if (!transformReady) {
-                transformReady = true;
-                transformBarFill.color = transformReadyColor; // Make the bar oscillate when ready
-            }
+            transformBarFill.color = transformDefaultColor; // Reset to default color when not ready
         }
     }
 
     private void UpdateDashBar() {
-        if (isMelee) {
-            dashBarFill.gameObject.SetActive(true); // Show dash bar in melee mode
+        if (player == null) return;
 
-            if (dashTimer < dashCooldown) {
-                dashTimer += Time.deltaTime;
-                float fillAmount = Mathf.Clamp01(dashTimer / dashCooldown);
-                dashBarFill.fillAmount = fillAmount;
-                dashBarFill.color = Color.Lerp(Color.blue, dashReadyColor, Mathf.Sin(Time.time * 5f) * 0.5f + 0.5f);
+        float dashCooldown = player.dashCooldown;
+        float dashTimer = player.dashTimer;
+
+        // Show the Dash bar only in melee mode
+        if (player.isMelee) {
+            dashBarFill.gameObject.SetActive(true);
+
+            // Calculate fill amount
+            float fillAmount = Mathf.Clamp01(1f - (dashTimer / dashCooldown)); // Fill as time decreases
+            dashBarFill.fillAmount = fillAmount;
+
+            // Oscillate color when ready
+            if (dashTimer <= 0) {
+                dashBarFill.color = Color.Lerp(dashDefaultColor, dashReadyColor, Mathf.Sin(Time.time * 5f) * 0.5f + 0.5f);
             } else {
-                if (!dashReady) {
-                    dashReady = true;
-                    dashBarFill.color = dashReadyColor; // Make the bar oscillate when ready
-                }
+                dashBarFill.color = dashDefaultColor; // Reset to default color when not ready
             }
         } else {
-            dashBarFill.gameObject.SetActive(false); // Hide dash bar when not in melee mode
+            dashBarFill.gameObject.SetActive(false); // Hide dash bar in ranged mode
         }
     }
 
+
     public void UseTransform() {
-        if (transformReady) {
-            transformTimer = 0f;
-            transformReady = false;
-        }
+        // Called when the player transforms
+        transformBarFill.fillAmount = 0f;
     }
 
     public void UseDash() {
-        if (dashReady) {
-            dashTimer = 0f;
-            dashReady = false;
-        }
-    }
-
-    public void SetMeleeMode(bool meleeMode) {
-        isMelee = meleeMode;
+        // Called when the player dashes
+        dashBarFill.fillAmount = 0f;
     }
 }

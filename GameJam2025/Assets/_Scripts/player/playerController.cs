@@ -26,9 +26,14 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float dashSpeedMultiplier = 7f; // How much faster the player moves during a dash
     [SerializeField] private float dashDuration = 0.1f;      // Duration of the dash in seconds
 
+    [Header("Melee Attack Settings")]
+    [SerializeField] private float meleeCooldown = 0.7f; // Cooldown time between melee attacks
+    [SerializeField] private GameObject meleeEffectPrefab; // Prefab for melee effect (e.g., slash sprite)
+    [SerializeField] private float offsetDistance = 1.0f; // kaugel attack spawning
     private bool isDashing = false;  
     private bool isMelee = false;                                // Tracks current mode (false = ranged, true = melee)
-    private float shootTimer = 0f;                               // Timer for shooting cooldown
+    private float shootTimer = 0f;       
+    private float meleeTimer = 0f;                         // Timer for shooting cooldown
     private float transformationTimer = 0f;                     // Timer for transformation cooldown
     private float dashTimer = 0f;                                // Timer for dash cooldown
 
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour {
         HandleShooting();
         HandleTransformation();
         HandleDash();
+        HandleMeleeAttack();
     }
 
     private void HandleMovement() {
@@ -61,6 +67,8 @@ public class PlayerController : MonoBehaviour {
         float currentSpeed = isMelee ? meleeSpeed : rangedSpeed;
         transform.Translate(moveInput * currentSpeed * Time.deltaTime, Space.World);
         
+
+        // edge collision checks 
         if(transform.position.x < -9) transform.position = new Vector3(-9, transform.position.y, transform.position.z);
         if(transform.position.x > 9) transform.position = new Vector3(9, transform.position.y, transform.position.z);
         if (transform.position.y < -9) transform.position = new Vector3(transform.position.x, -9, transform.position.z);
@@ -102,6 +110,37 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("Bullet Fired!");
     }
 
+    private void HandleMeleeAttack() {
+        // Reduce the melee cooldown timer
+        if (meleeTimer > 0) {
+            meleeTimer -= Time.deltaTime;
+        }
+
+        // Perform melee attack when in melee mode and cooldown allows
+        if (isMelee && Input.GetMouseButtonDown(0) && meleeTimer <= 0) {
+            animator.SetTrigger("MeleeAttack"); // Trigger attack animation
+            PerformMeleeEffect(); // Visualize the melee attack
+            meleeTimer = meleeCooldown; // Reset melee cooldown
+        }
+    }
+
+    private void PerformMeleeEffect() {
+        // Spawn a melee effect (e.g., slash sprite) at the firePoint
+        if (meleeEffectPrefab != null) {
+            // Calculate the offset based on the firePoint's rotation
+            Vector3 offset = firePoint.up * offsetDistance;
+
+            // Spawn the slash effect with the offset
+            Vector3 spawnPosition = firePoint.position + offset;
+            spawnPosition.z = -0.5f;
+            Instantiate(meleeEffectPrefab, spawnPosition, firePoint.rotation);
+
+            Debug.Log("Slash effect spawned!");
+            } else {
+            Debug.LogWarning("SlashEffectPrefab is not assigned!");
+            }
+        }
+
     private void HandleTransformation() {
         // Reduce the transformation cooldown timer
         if (transformationTimer > 0) {
@@ -118,10 +157,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
     private void Dash() {
-    if (!isDashing) {
-        StartCoroutine(DashCoroutine());
+        if (!isDashing) StartCoroutine(DashCoroutine());
     }
-}
 
     private IEnumerator DashCoroutine() {
         isDashing = true; // Set dashing to true
@@ -151,30 +188,16 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleDash() {
     // Reduce the dash cooldown timer
-    if (dashTimer > 0) {
-        dashTimer -= Time.deltaTime;
-    }
-
-    // Allow dashing if cooldown has finished
-    if (isMelee && Input.GetKeyDown(KeyCode.Space) && dashTimer <= 0) {
-        Dash();
-        dashTimer = dashCooldown; // Reset dash cooldown
-    }
-}
-
-    /*private void HandleDash() {
-        // Reduce the dash cooldown timer
         if (dashTimer > 0) {
             dashTimer -= Time.deltaTime;
         }
 
-        // Only allow dashing in melee mode
+        // Allow dashing if cooldown has finished
         if (isMelee && Input.GetKeyDown(KeyCode.Space) && dashTimer <= 0) {
             Dash();
             dashTimer = dashCooldown; // Reset dash cooldown
         }
-    }*/
-
+    }
     private void SetMode(bool meleeMode) {
         // Update the Animator Controller
         animator.runtimeAnimatorController = meleeMode ? meleeController : rangedController;

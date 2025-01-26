@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class boss_enraged_run : StateMachineBehaviour
 {
     public float speed = 2f;
-    public float standardAttackRange = 10f;
-
+    public float attackRange = 15f; // Range within which the boss decides to attack
+    public float attackCooldown = 5f; // Cooldown for any attack
+    private float attackCooldownTimer = 0f; // Tracks time since the last attack
 
     Transform player;
     Rigidbody2D rb;
@@ -17,41 +17,40 @@ public class boss_enraged_run : StateMachineBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = animator.GetComponent<Rigidbody2D>();
+        attackCooldownTimer = attackCooldown; // Ensure the boss can attack immediately if needed
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // if (player == null)
-        //{
-        //  Debug.LogError("Player not found! Make sure there is a GameObject tagged 'Player' in the scene.");
-        //}
-
+        // Movement logic
         Vector2 target = new Vector2(player.position.x, player.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
 
+        // Increment cooldown timer
+        attackCooldownTimer += Time.deltaTime;
 
-
-        //kui peaks ründama
-        //if boss should attack
-        //otsustamisrünnakutteha
-        //teevastavatrünnakut
-        //pane vastav attack trigger
-
-        //circular attack logic
-        if (Vector2.Distance(player.position, rb.position) > standardAttackRange)
+        // Decide on attack if within range and cooldown has elapsed
+        if (Vector2.Distance(player.position, rb.position) <= attackRange && attackCooldownTimer >= attackCooldown)
         {
-            animator.SetTrigger("EnragedCircularAttack");
+            // Randomly decide the attack
+            int attackDecision = Random.Range(0, 3); // Random number between 0 and 2
+            switch (attackDecision)
+            {
+                case 0:
+                    animator.SetTrigger("EnragedStandardAttack"); // Perform Standard Attack
+                    break;
+                case 1:
+                    animator.SetTrigger("EnragedCircularAttack"); // Perform Circular Attack
+                    break;
+                case 2:
+                    animator.SetTrigger("EnragedSingularBulletAttack"); // Perform Singular Bullet Circle Attack
+                    break;
+            }
+
+            attackCooldownTimer = 0f; // Reset cooldown
         }
-
-
-        //standard attack logic
-        if (Vector2.Distance(player.position, rb.position) <= standardAttackRange)
-        {
-            animator.SetTrigger("EnragedStandardAttack");
-        }
-
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -59,6 +58,6 @@ public class boss_enraged_run : StateMachineBehaviour
     {
         animator.ResetTrigger("EnragedStandardAttack");
         animator.ResetTrigger("EnragedCircularAttack");
+        animator.ResetTrigger("EnragedSingularBulletAttack");
     }
-
 }

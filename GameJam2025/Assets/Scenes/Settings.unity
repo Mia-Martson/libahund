@@ -211,19 +211,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1992252236}
-        m_TargetAssemblyTypeName: AudioSettingsController, Assembly-CSharp
-        m_MethodName: SetMusicVolume
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &48719528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,19 +1398,53 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1992252236}
-        m_TargetAssemblyTypeName: AudioSettingsController, Assembly-CSharp
-        m_MethodName: SetSFXVolume
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!1 &1135450081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1135450083}
+  - component: {fileID: 1135450082}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1135450082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135450081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831dc48ae45f4c345a95295afb4be9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuMusic: {fileID: 8300000, guid: 4554115b35cd4314b92891109558324f, type: 3}
+  buttonClickSFX: {fileID: 8300000, guid: 8013a7726badce2479d7ef0e135c93ad, type: 3}
+--- !u!4 &1135450083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135450081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.9901564, y: 3.28982, z: 0.071626686}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1161166541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2378,8 +2400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a9f6e85e446fd429ed8c4dd58e8a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicVolumeSlider: {fileID: 16264353}
-  sfxVolumeSlider: {fileID: 748760476}
+  musicSlider: {fileID: 16264353}
+  sfxSlider: {fileID: 748760476}
 --- !u!4 &1992252237
 Transform:
   m_ObjectHideFlags: 0
@@ -2481,3 +2503,4 @@ SceneRoots:
   - {fileID: 616874239}
   - {fileID: 1992252237}
   - {fileID: 700021179}
+  - {fileID: 1135450083}

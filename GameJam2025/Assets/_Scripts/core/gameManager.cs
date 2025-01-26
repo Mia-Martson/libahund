@@ -12,11 +12,16 @@ public class gameManager : MonoBehaviour {
         } else {
             Destroy(gameObject);
         }
+
+        
     }
 
     void Start()
     {
-        SoundManager.Instance.PlayMusic(sceneMusic);
+        if (SoundManager.Instance.musicSource.clip != sceneMusic || !SoundManager.Instance.musicSource.isPlaying)
+        {
+            SoundManager.Instance.PlayMusic(sceneMusic);
+        }
     }
 
     public void TransitionToRoom(string roomName) {

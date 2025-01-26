@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour {
     public static gameManager Instance { get; private set; }
+    public bool IsGameOver { get; private set; } = false;
     public AudioClip sceneMusic;
 
     // hävitab koik teised instanceid araaa!!!!!!!!!
@@ -27,5 +28,9 @@ public class gameManager : MonoBehaviour {
     public void TransitionToRoom(string roomName) {
         Debug.Log($"Transitioning to room: {roomName}");
         SceneManager.LoadScene(roomName);
+    }
+
+    public void SetGameOver() {
+        IsGameOver = true;
     }
 }

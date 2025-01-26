@@ -49,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
+        FindObjectOfType<WinLoseManager>().ShowLoseScreen();
         Debug.Log("Player died!");
         // Add player death logic (e.g., restart game, show game over screen)
     }

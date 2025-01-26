@@ -6909,12 +6909,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 724526fed80b15a4cb66f5cb31996b9c, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -7288,12 +7288,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 724526fed80b15a4cb66f5cb31996b9c, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -7315,6 +7315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1994072939}
+  - component: {fileID: 1994072940}
   m_Layer: 5
   m_Name: AbilityBars
   m_TagString: Untagged
@@ -7343,6 +7344,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1994072940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994072938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fc4b071c8d80a40ac54f563d6b71e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformBarFill: {fileID: 1967785369}
+  transformReadyColor: {r: 1, g: 1, b: 1, a: 1}
+  dashBarFill: {fileID: 1767749601}
+  dashReadyColor: {r: 1, g: 1, b: 1, a: 1}
+  player: {fileID: 2046658583}
+--- !u!114 &2046658583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+  m_PrefabInstance: {fileID: 2131307282}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155678b78bd9ad54f98de69c7a168af9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2131307282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7351,6 +7380,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+      propertyPath: abilityBars
+      value: 
+      objectReference: {fileID: 1994072940}
     - target: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
       propertyPath: maxBounds.x
       value: 10

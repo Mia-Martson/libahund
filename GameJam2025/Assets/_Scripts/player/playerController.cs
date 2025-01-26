@@ -19,10 +19,10 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float shootCooldown = 0.5f;
 
     [Header("Transformation Settings")]
-    [SerializeField] private float transformationCooldown = 5f;  // Cooldown time for transforming
+    [SerializeField] public float transformationCooldown = 5f;  // Cooldown time for transforming
 
     [Header("Melee Dash Settings")]
-    [SerializeField] private float dashCooldown = 1f;            // Cooldown time for dashing
+    [SerializeField] public float dashCooldown = 1f;            // Cooldown time for dashing
     [SerializeField] private float dashSpeedMultiplier = 7f; // How much faster the player moves during a dash
     [SerializeField] private float dashDuration = 0.1f;      // Duration of the dash in seconds
 
@@ -31,20 +31,22 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject meleeEffectPrefab; // Prefab for melee effect (e.g., slash sprite)
     [SerializeField] private float offsetDistance = 1.0f; // kaugel attack spawning
     private bool isDashing = false;  
-    private bool isMelee = false;                                // Tracks current mode (false = ranged, true = melee)
+    public bool isMelee = false;                                // Tracks current mode (false = ranged, true = melee)
     private float shootTimer = 0f;       
     private float meleeTimer = 0f;                         // Timer for shooting cooldown
-    private float transformationTimer = 0f;                     // Timer for transformation cooldown
-    private float dashTimer = 0f;                                // Timer for dash cooldown
+    public float transformationTimer = 0f;                     // Timer for transformation cooldown
+    public float dashTimer = 0f;                                // Timer for dash cooldown
 
     private Vector2 moveInput;                                   // Input for movement
     private Vector2 mousePosition;                               // Mouse position for aiming
 
     private SpriteRenderer spriteRenderer; 
 
+
     private bool isWalking = false;
 
     [SerializeField] private ParticleSystem runParticles; // Reference to the particle system
+    [SerializeField] private AbilityBars abilityBars; // et suhtleks ability baridega
 
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -151,6 +153,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E) && transformationTimer <= 0) {
             isMelee = !isMelee; // Toggle between ranged and melee
             SetMode(isMelee);
+            abilityBars.UseTransform();
             transformationTimer = transformationCooldown; // Reset transformation cooldown
 
             Debug.Log($"Transformed to {(isMelee ? "Melee" : "Ranged")} mode!");
@@ -195,6 +198,7 @@ public class PlayerController : MonoBehaviour {
         // Allow dashing if cooldown has finished
         if (isMelee && Input.GetKeyDown(KeyCode.Space) && dashTimer <= 0) {
             Dash();
+            abilityBars.UseDash();
             dashTimer = dashCooldown; // Reset dash cooldown
         }
     }

@@ -4896,7 +4896,12 @@ MonoBehaviour:
   meleeCooldown: 0.7
   meleeEffectPrefab: {fileID: 5235112088937611981, guid: 402b8cfc48327ec4bbafa3bd706ff8f3, type: 3}
   offsetDistance: 1
+  isMelee: 0
+  isDashing: 0
+  transformationTimer: 0
+  dashTimer: 0
   runParticles: {fileID: 7857806964191205672}
+  abilityBars: {fileID: 0}
 --- !u!212 &6459058873667202470
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5055,6 +5060,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
+  invincibilityDuration: 2
+  flashDuration: 0.1
+  hurtSound: {fileID: 8300000, guid: 3a01ed07bd697c54eaecadd9b1365868, type: 3}
 --- !u!1 &7383032904524066860
 GameObject:
   m_ObjectHideFlags: 0

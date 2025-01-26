@@ -125,8 +125,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500
   currentHealth: 0
-  flashDuration: 0.1
-  flashCount: 1
   DamageableStates:
   - kurat_idle
   - kurat_attack
@@ -137,7 +135,7 @@ MonoBehaviour:
   - kurat_enraged_circular_attack
   - kurat_enraged_singuler_bullet_circle_attack
   deathEffect: {fileID: 0}
-  flashMaterial: {fileID: 2100000, guid: fcdf96191636bd043ac94b1d34957149, type: 2}
+  hurtSound: {fileID: 8300000, guid: d8c35434f4a4d3f45a22c40446c336d5, type: 3}
 --- !u!114 &399922918413966481
 MonoBehaviour:
   m_ObjectHideFlags: 0

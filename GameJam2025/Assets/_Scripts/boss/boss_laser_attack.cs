@@ -5,7 +5,7 @@ using UnityEngine;
 public class boss_laser_attack : StateMachineBehaviour
 {
     boss boss;
-    private float laserDuration = 5f; // Duration for the laser attack
+    public float laserDuration = 4f; // Duration for the laser attack
     private float laserTimer = 0f; // Timer to track the laser duration
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -25,9 +25,16 @@ public class boss_laser_attack : StateMachineBehaviour
         // Check if the laser duration has elapsed
         if (laserTimer >= laserDuration)
         {
-            // Transition to the next state or end the laser attack
-            animator.SetTrigger("EnragedIdle"); // Replace with your actual state transition trigger
-            animator.ResetTrigger("Enraged");
+            // Check if the laser duration has elapsed
+            if (laserTimer >= laserDuration)
+            {
+                // Clean up the lasers immediately
+                CleanupLasers();
+
+                // Transition to the next state or end the laser attack
+                animator.SetTrigger("EnragedIdle"); // Replace with your actual state transition trigger
+                animator.ResetTrigger("Enraged");
+            }
         }
     }
 
@@ -40,6 +47,19 @@ public class boss_laser_attack : StateMachineBehaviour
             Destroy(laser);
         }
         boss.activeLasers.Clear();
+    }
+
+    // Method to clean up lasers
+    private void CleanupLasers()
+    {
+        if (boss.activeLasers != null && boss.activeLasers.Count > 0)
+        {
+            foreach (GameObject laser in boss.activeLasers)
+            {
+                Destroy(laser);
+            }
+            boss.activeLasers.Clear();
+        }
     }
 }
 

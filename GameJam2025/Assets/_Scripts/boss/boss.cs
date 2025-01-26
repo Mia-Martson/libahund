@@ -11,6 +11,10 @@ public class boss : MonoBehaviour
     public int numberOfBulletsInStandardAttack = 20; // How many bullets in the circle
     public int numberOfBulletsInCircleAttack = 200;
 
+    public float enragedShootInterval = 1f; // Time between each circle
+    public int numberOfBulletsInEnragedStandardAttack = 20; // How many bullets in the circle
+    public int numberOfBulletsInEnragedCircleAttack = 200;
+
 
     public float bulletSpeed; // Speed of the bullets
     public float waveOffsetAngle = 0f;
@@ -119,5 +123,64 @@ public class boss : MonoBehaviour
             activeLasers.Add(laser);
         }
 
+    }
+
+    public void EnragedStandardAttack()
+    {
+        //ründa mängijat
+
+        float angleStep = 360f / numberOfBulletsInEnragedStandardAttack; // Angle between each bullet
+        float angle = waveOffsetAngle;
+
+        for (int i = 0; i < numberOfBulletsInEnragedStandardAttack; i++)
+        {
+            // Calculate the direction of the bullet
+            float bulletDirX = Mathf.Cos(angle * Mathf.Deg2Rad);
+            float bulletDirY = Mathf.Sin(angle * Mathf.Deg2Rad);
+            Vector2 bulletDirection = new Vector2(bulletDirX, bulletDirY);
+
+            // Spawn the bullet
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.SetDirection(bulletDirection);
+            bulletScript.speed = bulletSpeed;
+
+            // Increment the angle for the next bullet
+            angle += angleStep;
+
+            waveOffsetAngle += waveAngleIncrement;
+
+            // Ensure the angle stays within 0-360 degrees
+            if (waveOffsetAngle >= 360f)
+            {
+                waveOffsetAngle -= 360f;
+            }
+
+        }
+    }
+
+    public void EnragedCircularAttack()
+    {
+        Debug.Log("CIRCULAR ATTACK!!!!!!!!!");
+
+        float angleStep = 360f / numberOfBulletsInEnragedCircleAttack; // Angle between each bullet
+        float angle = 0f; // Starting angle
+
+        for (int i = 0; i < numberOfBulletsInEnragedCircleAttack; i++)
+        {
+            // Calculate the direction of the bullet
+            float bulletDirX = Mathf.Cos(angle * Mathf.Deg2Rad);
+            float bulletDirY = Mathf.Sin(angle * Mathf.Deg2Rad);
+            Vector2 bulletDirection = new Vector2(bulletDirX, bulletDirY);
+
+            // Spawn the bullet
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.SetDirection(bulletDirection); // Set the direction of the bullet
+            bulletScript.speed = bulletSpeed;
+
+            // Increment the angle for the next bullet
+            angle += angleStep;
+        }
     }
 }

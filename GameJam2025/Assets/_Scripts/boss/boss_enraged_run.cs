@@ -42,14 +42,14 @@ public class boss_enraged_run : StateMachineBehaviour
         //circular attack logic
         if (Vector2.Distance(player.position, rb.position) > standardAttackRange)
         {
-            animator.SetTrigger("CircularAttack");
+            animator.SetTrigger("EnragedCircularAttack");
         }
 
 
         //standard attack logic
         if (Vector2.Distance(player.position, rb.position) <= standardAttackRange)
         {
-            animator.SetTrigger("StandardAttack");
+            animator.SetTrigger("EnragedStandardAttack");
         }
 
     }
@@ -57,8 +57,8 @@ public class boss_enraged_run : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("StandardAttack");
-        animator.ResetTrigger("CircularAttack");
+        animator.ResetTrigger("EnragedStandardAttack");
+        animator.ResetTrigger("EnragedCircularAttack");
     }
 
 }

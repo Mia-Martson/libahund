@@ -6,6 +6,10 @@ public class boss : MonoBehaviour
 {
     public GameObject bulletPrefab; // Assign your bullet prefab here
     public GameObject laserPrefab;
+    public GameObject laserIndicatorPrefab; // Reference your white line prefab
+
+    public float indicatorDuration = 2f; // Time the indicator is shown before lasers appear
+
 
     public float shootInterval = 1f; // Time between each circle
     public int numberOfBulletsInStandardAttack = 20; // How many bullets in the circle
@@ -111,17 +115,23 @@ public class boss : MonoBehaviour
         }
         activeLasers.Clear();
 
-        // Spawn 4 lasers in an X pattern
+        // List to hold the indicators temporarily
+        List<GameObject> indicators = new List<GameObject>();
+
+        // Spawn indicators in an X pattern
         for (int i = 0; i < 4; i++)
         {
-            float angle = (i * 90f); // 45 degrees apart for X pattern
+            float angle = (i * 90f); // 90 degrees apart for X pattern
             Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
 
-            // Spawn the laser
-            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
-            laser.transform.up = direction; // Align the laser to the direction
-            activeLasers.Add(laser);
+            // Spawn the indicator
+            GameObject indicator = Instantiate(laserIndicatorPrefab, transform.position, Quaternion.identity);
+            indicator.transform.up = direction; // Align the indicator to the direction
+            indicators.Add(indicator);
         }
+
+        // Start the coroutine that replaces indicators with lasers after a delay
+        StartCoroutine(ReplaceIndicatorsWithLasers(indicators));
 
     }
 
@@ -207,6 +217,27 @@ public class boss : MonoBehaviour
 
             // Wait for the specified fire rate before shooting the next bullet
             yield return new WaitForSeconds(fireRate);
+        }
+    }
+
+    private IEnumerator ReplaceIndicatorsWithLasers(List<GameObject> indicators)
+    {
+        // Wait for the indicator duration
+        yield return new WaitForSeconds(indicatorDuration);
+
+        // Replace indicators with lasers
+        foreach (GameObject indicator in indicators)
+        {
+            // Get the indicator's current rotation and position
+            Vector3 position = indicator.transform.position;
+            Quaternion rotation = indicator.transform.rotation;
+
+            // Destroy the indicator
+            Destroy(indicator);
+
+            // Spawn the actual laser
+            GameObject laser = Instantiate(laserPrefab, position, rotation);
+            activeLasers.Add(laser);
         }
     }
 }

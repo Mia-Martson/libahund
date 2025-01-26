@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   attackRange: 15
-  attackCooldown: 5
+  attackCooldown: 3
 --- !u!1102 &-6680527176522510778
 AnimatorState:
   serializedVersion: 6
@@ -943,7 +943,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 100, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 7460840731375432615}
+  m_DefaultState: {fileID: -5158552180735681758}
 --- !u!1102 &8363341166570184187
 AnimatorState:
   serializedVersion: 6

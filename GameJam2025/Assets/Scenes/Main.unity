@@ -5661,7 +5661,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1001 &1203085014
+--- !u!1001 &1255363972
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -5670,20 +5670,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: laserPrefab
-      value: 
-      objectReference: {fileID: 6920364922133956132, guid: 365cc80641725594f9d48af4fdb41236, type: 3}
-    - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: waveAngleIncrement
-      value: 51.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: numberOfBulletsInCircleAttack
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: numberOfBulletsInStandardAttack
-      value: 12
+      propertyPath: indicatorDuration
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 856097894288727591, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: m_Name
@@ -5729,29 +5717,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7030437652029429756, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: m_Size.y
-      value: 3.7705708
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030437652029429756, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.10578418
-      objectReference: {fileID: 0}
     - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: DamageableStates.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: DamageableStates.Array.data[4]
-      value: kurat_enraged_circular_attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: DamageableStates.Array.data[5]
-      value: kurat_enraged_attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
-      propertyPath: DamageableStates.Array.data[6]
-      value: kurat_enraged_attack
+      propertyPath: DamageableStates.Array.data[7]
+      value: kurat_enraged_singular_bullet_circle_attack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7132,7 +7100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a44c0948dd82341aaf1414bb4515c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMusic: {fileID: 0}
+  sceneMusic: {fileID: 8300000, guid: 9df9874657b352346a2c030b39aef3a4, type: 3}
 --- !u!1 &1468351437
 GameObject:
   m_ObjectHideFlags: 0
@@ -8442,7 +8410,7 @@ SceneRoots:
   - {fileID: 1427826983}
   - {fileID: 2131307282}
   - {fileID: 1755789565}
-  - {fileID: 1203085014}
+  - {fileID: 1255363972}
   - {fileID: 1494965715}
   - {fileID: 228872108}
   - {fileID: 538139129}

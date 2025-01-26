@@ -60,6 +60,7 @@ public class bosshealth : MonoBehaviour
 
         if(currentHealth < 0)
         {
+            bossAnimator.SetTrigger("Dead");
             Debug.Log("Kurat sai surma");
         }
     }

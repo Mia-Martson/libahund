@@ -40,8 +40,9 @@ public class PlayerController : MonoBehaviour {
     private Vector2 moveInput;                                   // Input for movement
     private Vector2 mousePosition;                               // Mouse position for aiming
 
-    private SpriteRenderer spriteRenderer; 
+    private SpriteRenderer spriteRenderer;
 
+    public AudioClip transformationSound;
 
     private bool isWalking = false;
 
@@ -154,6 +155,7 @@ public class PlayerController : MonoBehaviour {
             isMelee = !isMelee; // Toggle between ranged and melee
             SetMode(isMelee);
             abilityBars.UseTransform();
+            SoundManager.Instance.PlaySFX(transformationSound);
             transformationTimer = transformationCooldown; // Reset transformation cooldown
 
             Debug.Log($"Transformed to {(isMelee ? "Melee" : "Ranged")} mode!");

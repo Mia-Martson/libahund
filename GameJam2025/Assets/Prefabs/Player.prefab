@@ -4900,6 +4900,7 @@ MonoBehaviour:
   isDashing: 0
   transformationTimer: 0
   dashTimer: 0
+  transformationSound: {fileID: 8300000, guid: 3a01ed07bd697c54eaecadd9b1365868, type: 3}
   runParticles: {fileID: 7857806964191205672}
   abilityBars: {fileID: 0}
 --- !u!212 &6459058873667202470
@@ -5063,7 +5064,7 @@ MonoBehaviour:
   currentHealth: 0
   invincibilityDuration: 2
   flashDuration: 0.1
-  hurtSound: {fileID: 8300000, guid: 3a01ed07bd697c54eaecadd9b1365868, type: 3}
+  hurtSound: {fileID: 8300000, guid: 8013a7726badce2479d7ef0e135c93ad, type: 3}
 --- !u!1 &7383032904524066860
 GameObject:
   m_ObjectHideFlags: 0

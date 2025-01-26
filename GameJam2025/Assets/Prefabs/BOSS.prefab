@@ -164,6 +164,7 @@ MonoBehaviour:
   waveAngleIncrement: 21
   laserRotationSpeed: 20
   activeLasers: []
+  screamSound: {fileID: 8300000, guid: 64c2c23da09f5b64db8e571c198619de, type: 3}
 --- !u!50 &4417060118756080818
 Rigidbody2D:
   serializedVersion: 4

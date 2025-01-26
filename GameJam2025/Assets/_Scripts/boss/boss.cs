@@ -27,9 +27,12 @@ public class boss : MonoBehaviour
     public float laserRotationSpeed = 30f; // Degrees per second for the spinning lasers
     public List<GameObject> activeLasers = new List<GameObject>();
 
+    public AudioClip screamSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.Instance.PlaySFX(screamSound);
     }
 
     // Update is called once per frame

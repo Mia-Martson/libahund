@@ -8,6 +8,8 @@ public class boss_laser_attack : StateMachineBehaviour
     public float laserDuration = 4f; // Duration for the laser attack
     private float laserTimer = 0f; // Timer to track the laser duration
 
+    public AudioClip screamSound;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -15,6 +17,7 @@ public class boss_laser_attack : StateMachineBehaviour
         boss = animator.GetComponent<boss>();
         laserTimer = 0f; // Reset the timer
         boss.LaserAttack(); // Trigger the laser attack
+        SoundManager.Instance.PlaySFX(screamSound);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

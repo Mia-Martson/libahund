@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private ParticleSystem runParticles; // Reference to the particle system
     [SerializeField] private AbilityBars abilityBars; // et suhtleks ability baridega
 
+    public GameObject Kurat;
+
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>(); // Get the Animator component
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
-        if (playerHealth.currentHealth > 0)
+        if (playerHealth.currentHealth > 0 && Kurat.GetComponent<bosshealth>().currentHealth > 0)
         {
             HandleMovement();
             HandleAnimations();
@@ -69,7 +71,17 @@ public class PlayerController : MonoBehaviour {
             HandleDash();
             HandleMeleeAttack();
         }
-        else animator.SetTrigger("dead_player");
+        else if (playerHealth.currentHealth > 0 && Kurat.GetComponent <bosshealth>().currentHealth <= 0)
+        {
+            animator.SetTrigger("winner_player");
+            isWalking = false;
+        }
+        else if(playerHealth.currentHealth <= 0)
+        {
+            animator.SetTrigger("dead_player");
+            isWalking = false;
+        }
+       
     }
 
     private void HandleMovement() {

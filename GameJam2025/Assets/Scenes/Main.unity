@@ -6831,6 +6831,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: laserRotationSpeed
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 399922918413966481, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: waveAngleIncrement
       value: 21
       objectReference: {fileID: 0}
@@ -6886,6 +6890,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 157317901}
+    - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: DamageableStates.Array.data[7]
       value: kurat_enraged_singular_bullet_circle_attack
@@ -7029,6 +7037,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270541474}
   m_CullTransparentMesh: 1
+--- !u!1 &1318991746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 856097894288727591, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+  m_PrefabInstance: {fileID: 1255363972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1325399578
 GameObject:
   m_ObjectHideFlags: 0
@@ -10069,6 +10082,10 @@ PrefabInstance:
       propertyPath: minBounds.y
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 1426940815327535565, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+      propertyPath: Kurat
+      value: 
+      objectReference: {fileID: 1318991746}
     - target: {fileID: 1426940815327535565, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
       propertyPath: maxHealth
       value: 6

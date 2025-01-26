@@ -134,10 +134,10 @@ MonoBehaviour:
   - kurat_enraged_attack
   - kurat_enraged_circular_attack
   - kurat_enraged_singular_bullet_circle_attack
-  - kurat_lasering
   deathEffect: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: d8c35434f4a4d3f45a22c40446c336d5, type: 3}
   failedHurtSound: {fileID: 8300000, guid: 2dffec570d81a2247ad62ff4f2e361e4, type: 3}
+  player: {fileID: 0}
 --- !u!114 &399922918413966481
 MonoBehaviour:
   m_ObjectHideFlags: 0

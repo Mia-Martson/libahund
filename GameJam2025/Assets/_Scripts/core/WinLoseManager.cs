@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class WinLoseManager : MonoBehaviour {
     [Header("UI Panels")]
@@ -20,27 +21,28 @@ public class WinLoseManager : MonoBehaviour {
     }
 
     public void ShowWinScreen() {
-        StartCoroutine(WaitAndDoSomething());
 
         if (winPanel != null) {
-            winPanel.SetActive(true); // Activate the panel
-            winAnimator.Play("WinPanelZoomIn"); // Play the zoom-in animation
+            StartCoroutine(WaitSomeSeconds(winPanel));
+            /*winPanel.SetActive(true); // Activate the panel
+            winAnimator.Play("WinPanelZoomIn"); // Play the zoom-in animation*/
         }
     }
 
     public void ShowLoseScreen() {
-        StartCoroutine(WaitAndDoSomething());
 
         if (losePanel != null) {
-            losePanel.SetActive(true); // Activate the panel
-            loseAnimator.Play("LosePanelZoomIn"); // Play the zoom-in animation
+            StartCoroutine(WaitSomeSeconds(losePanel));
+            /*losePanel.SetActive(true); // Activate the panel
+            loseAnimator.Play("LosePanelZoomIn"); // Play the zoom-in animation*/
         }
     }
 
-    IEnumerator WaitAndDoSomething()
+    IEnumerator WaitSomeSeconds(GameObject panel)
     {
-        Debug.Log("Waiting for 3 seconds...");
-        yield return new WaitForSeconds(3f); // Waits for 3 seconds
-        Debug.Log("Done waiting!");
+        yield return new WaitForSeconds(3f);
+        panel.SetActive(true);
+        if (panel == losePanel) loseAnimator.Play("LosePanelZoomIn");
+        else winAnimator.Play("WinPanelZoomIn");
     }
 }

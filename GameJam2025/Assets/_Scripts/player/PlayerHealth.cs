@@ -16,13 +16,25 @@ public class PlayerHealth : MonoBehaviour
 
     public AudioClip hurtSound;
 
+    public GameObject Kurat;
+    private Animator playerAnimator;
+
     void Start()
     {
         currentHealth = maxHealth;
         playerController = GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
         heartUIManager = FindObjectOfType<HeartUIManager>(); // Find the HeartUIManager
-        
+        playerAnimator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Kurat.GetComponent<bosshealth>().currentHealth <= 0)
+        {
+            playerAnimator.SetTrigger("winner_player");
+            currentHealth += 100;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -81,4 +93,6 @@ public class PlayerHealth : MonoBehaviour
     // Start the health regeneration process
     heartUIManager.StartHealthRegen(regenDelay);
 }
+
+
 }

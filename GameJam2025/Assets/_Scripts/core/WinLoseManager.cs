@@ -20,6 +20,8 @@ public class WinLoseManager : MonoBehaviour {
     }
 
     public void ShowWinScreen() {
+        StartCoroutine(WaitAndDoSomething());
+
         if (winPanel != null) {
             winPanel.SetActive(true); // Activate the panel
             winAnimator.Play("WinPanelZoomIn"); // Play the zoom-in animation

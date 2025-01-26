@@ -36,7 +36,7 @@ public class bosshealth : MonoBehaviour
     {
         if(player.GetComponent<PlayerHealth>().currentHealth <= 0)
         {
-            bossAnimator.SetTrigger("Dead");
+            bossAnimator.SetTrigger("Winner");
         }
     }
 

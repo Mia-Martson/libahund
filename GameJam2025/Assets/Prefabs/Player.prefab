@@ -4890,10 +4890,12 @@ MonoBehaviour:
   firePoint: {fileID: 3014117912025273467}
   shootCooldown: 0.5
   transformationCooldown: 5
-  dashDistance: 5
   dashCooldown: 1
   dashSpeedMultiplier: 3
   dashDuration: 0.1
+  meleeCooldown: 0.7
+  meleeEffectPrefab: {fileID: 5235112088937611981, guid: 402b8cfc48327ec4bbafa3bd706ff8f3, type: 3}
+  offsetDistance: 1
   runParticles: {fileID: 7857806964191205672}
 --- !u!212 &6459058873667202470
 SpriteRenderer:

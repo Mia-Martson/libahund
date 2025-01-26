@@ -8,6 +8,7 @@ public class boss_singular_bullet_circle_attack : StateMachineBehaviour
     public float FireRate = 0.2f; // Time between each bullet
     public int NumberOfBullets = 20; // Total number of bullets to fire in a circle
 
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

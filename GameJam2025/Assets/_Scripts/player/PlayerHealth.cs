@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
     private HeartUIManager heartUIManager;
 
-
+    public AudioClip hurtSound;
 
     void Start()
     {
@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
         }
         
         currentHealth -= damage;
+        SoundManager.Instance.PlaySFX(hurtSound);
         Debug.Log("Player took damage! Current health: " + currentHealth);
 
         if (currentHealth <= 0)

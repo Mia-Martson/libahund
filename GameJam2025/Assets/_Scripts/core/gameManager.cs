@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour {
     public static gameManager Instance { get; private set; }
+    public AudioClip sceneMusic;
 
     // hävitab koik teised instanceid araaa!!!!!!!!!
     private void Awake() {
@@ -11,6 +12,11 @@ public class gameManager : MonoBehaviour {
         } else {
             Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+        SoundManager.Instance.PlayMusic(sceneMusic);
     }
 
     public void TransitionToRoom(string roomName) {

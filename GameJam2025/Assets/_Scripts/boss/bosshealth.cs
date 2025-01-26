@@ -15,6 +15,8 @@ public class bosshealth : MonoBehaviour
     private Shader shaderSpritesDefault;
     private float flashDuration = 0.1f;
 
+    public AudioClip hurtSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,7 @@ public class bosshealth : MonoBehaviour
             return;
         }
         currentHealth -= damage;
+        SoundManager.Instance.PlaySFX(hurtSound);
         StartCoroutine(FlashWhite());
 
         Debug.Log(currentHealth);

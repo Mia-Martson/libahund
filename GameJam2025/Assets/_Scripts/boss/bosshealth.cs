@@ -7,10 +7,11 @@ public class bosshealth : MonoBehaviour
     public int maxHealth = 50;
     public int currentHealth;
     private Animator bossAnimator;
-
+    public float flashDuration = 0.1f; // Duration of each flash
+    public int flashCount = 1; // Number of flashes
     public List<string> DamageableStates;
-
     public GameObject deathEffect; // Optional particle effect or animation for death
+
 
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class bosshealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         bossAnimator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -36,6 +38,7 @@ public class bosshealth : MonoBehaviour
         }
 
         currentHealth -= damage;
+       
         
         Debug.Log(currentHealth);
 
@@ -52,7 +55,10 @@ public class bosshealth : MonoBehaviour
             Debug.Log("Kurat sai surma");
 
         }
+
     }
+
+
 
     private bool IsDamageableState()
     {
@@ -70,4 +76,6 @@ public class bosshealth : MonoBehaviour
 
         return false;
     }
+
+
 }

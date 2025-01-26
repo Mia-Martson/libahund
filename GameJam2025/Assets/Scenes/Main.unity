@@ -297,6 +297,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &157317901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5632689670696934356, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
+  m_PrefabInstance: {fileID: 2131307282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &183833114
 GameObject:
   m_ObjectHideFlags: 0
@@ -6878,6 +6883,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 157317901}
+    - target: {fileID: 7798574354921659401, guid: 107c19874b4a08640b75df50de24a3cb, type: 3}
       propertyPath: DamageableStates.Array.data[7]
       value: kurat_enraged_singular_bullet_circle_attack
       objectReference: {fileID: 0}
@@ -9816,7 +9825,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1081503301016798730, guid: a16f985b0505e8940800c6b36dc5c6fa, type: 3}
   m_PrefabInstance: {fileID: 2131307282}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 157317901}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 155678b78bd9ad54f98de69c7a168af9, type: 3}

@@ -183,4 +183,30 @@ public class boss : MonoBehaviour
             angle += angleStep;
         }
     }
+
+    public IEnumerator SingularBulletCircleAttack(float fireRate, int numberOfBullets)
+    {
+        float angleStep = 360f / numberOfBullets; // Angle step between each bullet
+        float angle = 0f; // Starting angle
+
+        for (int i = 0; i < numberOfBullets; i++)
+        {
+            // Calculate the direction of the bullet
+            float bulletDirX = Mathf.Cos(angle * Mathf.Deg2Rad);
+            float bulletDirY = Mathf.Sin(angle * Mathf.Deg2Rad);
+            Vector2 bulletDirection = new Vector2(bulletDirX, bulletDirY);
+
+            // Spawn the bullet
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.SetDirection(bulletDirection);
+            bulletScript.speed = bulletSpeed;
+
+            // Increment the angle for the next bullet
+            angle += angleStep;
+
+            // Wait for the specified fire rate before shooting the next bullet
+            yield return new WaitForSeconds(fireRate);
+        }
+    }
 }
